@@ -378,7 +378,7 @@ body {
 }
 
 .timer-display {
-  font-size: 42px;
+  font-size: 64px;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -389,12 +389,12 @@ body {
 }
 
 .timer-digit {
-  min-width: 48px;
+  min-width: 72px;
   text-align: center;
 }
 
 .timer-colon {
-  font-size: 42px;
+  font-size: 64px;
   color: inherit;
   margin: 0 2px;
 }
@@ -422,9 +422,9 @@ body {
 }
 
 .team-name-display {
-  font-size: 22px;
+  font-size: 33px;
   font-weight: 700;
-  padding: 6px 24px;
+  padding: 9px 36px;
   border: 2px dashed rgba(255, 255, 255, 0.4);
   border-radius: 8px;
   text-align: center;
@@ -432,10 +432,10 @@ body {
 }
 
 .score-value {
-  font-size: 100px;
+  font-size: 150px;
   font-weight: bold;
   line-height: 1;
-  min-width: 160px;
+  min-width: 240px;
   text-align: center;
 }
 
@@ -446,13 +446,13 @@ body {
 }
 
 .btn-score-plus {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   border: 2px solid #ccc;
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
-  font-size: 18px;
+  font-size: 27px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.15s;
@@ -475,13 +475,13 @@ body {
 }
 
 .btn-score-minus {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: 2px solid #ff4444;
   background: rgba(255, 68, 68, 0.15);
   color: #ff6666;
-  font-size: 14px;
+  font-size: 21px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.15s;
@@ -498,7 +498,7 @@ body {
 }
 
 .vs-x-large {
-  font-size: 50px;
+  font-size: 75px;
   font-weight: 700;
   color: #fff;
   flex-shrink: 0;
@@ -520,8 +520,8 @@ body {
 
 /* Player panels (both sides) */
 .player-panel {
-  width: 240px;
-  min-width: 200px;
+  width: 360px;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -536,10 +536,10 @@ body {
 }
 
 .panel-team-header {
-  padding: 8px 12px;
+  padding: 12px 18px;
   background: #1a1a1a;
   color: #fff;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 700;
   text-align: center;
   border-bottom: 3px solid #ffdd00;
@@ -580,7 +580,7 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 14px;
+  font-size: 21px;
   min-width: 0;
   flex: 1;
 }
@@ -589,17 +589,16 @@ body {
   font-family: 'Orbitron', sans-serif;
   font-weight: 700;
   color: #ffdd00;
-  min-width: 28px;
+  min-width: 42px;
   text-align: right;
-  font-size: 13px;
+  font-size: 20px;
 }
 
 .player-name {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 11px;
-  /* Smaller for Page B names */
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -611,13 +610,13 @@ body {
 }
 
 .btn-foul {
-  width: 28px;
-  height: 28px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   border: 1.5px solid #888;
   background: rgba(255, 255, 255, 0.06);
   color: #fff;
-  font-size: 15px;
+  font-size: 30px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -632,9 +631,9 @@ body {
 
 .player-foul-total {
   font-family: 'Orbitron', sans-serif;
-  font-size: 14px;
+  font-size: 28px;
   font-weight: 700;
-  min-width: 18px;
+  min-width: 36px;
   text-align: center;
   color: #ffdd00;
 }
@@ -681,8 +680,8 @@ body {
 }
 
 #shot-clock-display {
-  font-size: 48px;
-  padding: 4px 14px;
+  font-size: 72px;
+  padding: 6px 21px;
 }
 
 /* Team fouls area */
@@ -695,19 +694,19 @@ body {
 
 .team-labels-row {
   display: flex;
-  gap: 50px;
-  font-size: 18px;
+  gap: 75px;
+  font-size: 27px;
   font-weight: 700;
 }
 
 .team-label-b {
-  min-width: 60px;
+  min-width: 90px;
   text-align: center;
 }
 
 .fouls-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 24px;
+  font-size: 36px;
   font-weight: 700;
   color: #fff;
 }
@@ -715,13 +714,13 @@ body {
 .team-fouls-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
 }
 
 .foul-value {
-  font-size: 60px;
+  font-size: 90px;
   font-weight: bold;
-  min-width: 60px;
+  min-width: 90px;
   text-align: center;
   border-radius: 8px;
   padding: 4px 8px;
@@ -733,7 +732,7 @@ body {
 }
 
 .foul-x {
-  font-size: 30px;
+  font-size: 45px;
   color: #fff;
 }
 
@@ -741,23 +740,23 @@ body {
 .possession-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
   margin-top: 4px;
 }
 
 .possession-label {
-  font-size: 16px;
+  font-size: 24px;
   color: #aaa;
   font-weight: 700;
 }
 
 .btn-possession {
-  width: 44px;
-  height: 36px;
+  width: 66px;
+  height: 54px;
   background: rgba(255, 50, 50, 0.15);
   border: 2px solid transparent;
   color: #666;
-  font-size: 20px;
+  font-size: 30px;
   cursor: pointer;
   border-radius: 6px;
   display: flex;
@@ -780,18 +779,18 @@ body {
 .shot-clock-controls {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 21px;
   margin-top: 8px;
 }
 
 .btn-shot-reset {
-  width: 52px;
-  height: 52px;
+  width: 78px;
+  height: 78px;
   border-radius: 50%;
   border: 2px solid #33cc66;
   background: rgba(50, 204, 100, 0.1);
   color: #33cc66;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 700;
   cursor: pointer;
   font-family: 'Orbitron', sans-serif;
