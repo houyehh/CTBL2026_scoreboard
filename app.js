@@ -701,12 +701,12 @@ function updateAutoScale() {
   const longEdge = Math.max(vw, vh);
   const shortEdge = Math.min(vw, vh);
 
-  const baseWidth = 1100;
-  const baseHeight = 700;
+  const baseWidth = 850;
+  const baseHeight = 550;
 
   const scaleX = longEdge / baseWidth;
   const scaleY = shortEdge / baseHeight;
-  const scale = Math.min(scaleX, scaleY, 1.2);
+  const scale = Math.min(scaleX, scaleY, 2.5); // Allow scaling up more to fill the screen
 
   pages.forEach(page => {
     // If user's device is in portrait mode, we rotate the UI 90 degrees to force landscape view

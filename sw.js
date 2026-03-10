@@ -1,5 +1,5 @@
 // Service Worker for offline support
-const CACHE_NAME = 'scoreboard-v9';
+const CACHE_NAME = 'scoreboard-v10';
 const ASSETS = [
   './',
   './index.html',
