@@ -1,0 +1,13 @@
+# Rosters source files (not needed for the web app)
+rosters/
+draft.pdf
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp
+*.swo

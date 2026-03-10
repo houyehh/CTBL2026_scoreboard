@@ -1,0 +1,19 @@
+# Requirements
+# ============
+# 此專案為純前端靜態網站，不需要 Python 或 Node.js 後端。
+# 
+# 運行環境：
+# - 現代網頁瀏覽器 (Chrome, Firefox, Edge, Safari)
+# - 支援 JavaScript ES6+
+# - 支援 Service Worker (離線功能)
+#
+# 本地開發 (擇一)：
+# - Python 3: python -m http.server 8000
+# - Node.js:  npx serve .
+# - VS Code Live Server 擴充套件
+#
+# 部署：
+# - GitHub Pages (免費，僅需 push 到 GitHub)
+# - 任何靜態檔案託管服務 (Netlify, Vercel, etc.)
+#
+# 無額外 Python 套件需求。

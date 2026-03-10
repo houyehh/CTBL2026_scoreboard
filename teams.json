@@ -1,0 +1,918 @@
+{
+  "管院": [
+    {
+      "number": "11",
+      "name": "黃品倫"
+    },
+    {
+      "number": "14",
+      "name": "楊博荏"
+    },
+    {
+      "number": "1",
+      "name": "陳勁鍀"
+    },
+    {
+      "number": "6",
+      "name": "徐翊翔"
+    },
+    {
+      "number": "35",
+      "name": "林峻宇"
+    },
+    {
+      "number": "7",
+      "name": "林新哲"
+    },
+    {
+      "number": "15",
+      "name": "蕭永紘"
+    },
+    {
+      "number": "38",
+      "name": "黃亮瑋"
+    },
+    {
+      "number": "5",
+      "name": "楊皓宇"
+    },
+    {
+      "number": "26",
+      "name": "鄭又銜"
+    },
+    {
+      "number": "69",
+      "name": "楊政哲"
+    },
+    {
+      "number": "8",
+      "name": "吳承濬"
+    },
+    {
+      "number": "12",
+      "name": "曾子瑋"
+    },
+    {
+      "number": "0",
+      "name": "黃煦"
+    }
+  ],
+  "光電": [
+    {
+      "number": "1",
+      "name": "張睿家"
+    },
+    {
+      "number": "3",
+      "name": "黃元霆"
+    },
+    {
+      "number": "4",
+      "name": "挪洋•彼嶺"
+    },
+    {
+      "number": "7",
+      "name": "陳昱瑋"
+    },
+    {
+      "number": "11",
+      "name": "彭至平"
+    },
+    {
+      "number": "13",
+      "name": "蕭芷謙"
+    },
+    {
+      "number": "14",
+      "name": "洪偉宸"
+    },
+    {
+      "number": "22",
+      "name": "黃英睿"
+    },
+    {
+      "number": "23",
+      "name": "林詩凱"
+    },
+    {
+      "number": "35",
+      "name": "邱樞焱"
+    },
+    {
+      "number": "36",
+      "name": "吳仲崴"
+    },
+    {
+      "number": "55",
+      "name": "戴佳勳"
+    },
+    {
+      "number": "77",
+      "name": "李昱騏"
+    }
+  ],
+  "半導體": [
+    {
+      "number": "24",
+      "name": "蔡琨祥"
+    },
+    {
+      "number": "13",
+      "name": "李翊豪"
+    },
+    {
+      "number": "21",
+      "name": "鄭祖亦"
+    },
+    {
+      "number": "5",
+      "name": "謝鈺洋"
+    },
+    {
+      "number": "16",
+      "name": "黃叡祺"
+    },
+    {
+      "number": "11",
+      "name": "祁昱紝"
+    },
+    {
+      "number": "56",
+      "name": "蘇柏臻"
+    },
+    {
+      "number": "99",
+      "name": "蔡宗佑"
+    },
+    {
+      "number": "1",
+      "name": "曾毓祥"
+    },
+    {
+      "number": "35",
+      "name": "陳煥允"
+    },
+    {
+      "number": "8",
+      "name": "張宇翔"
+    },
+    {
+      "number": "51",
+      "name": "蔡聿林"
+    },
+    {
+      "number": "2",
+      "name": "陳皇愷"
+    }
+  ],
+  "土木": [
+    {
+      "number": "7",
+      "name": "林恆光"
+    },
+    {
+      "number": "4",
+      "name": "邱祈恩"
+    },
+    {
+      "number": "1",
+      "name": "陳歷平"
+    },
+    {
+      "number": "13",
+      "name": "尤莛安"
+    },
+    {
+      "number": "10",
+      "name": "謝承亨"
+    },
+    {
+      "number": "21",
+      "name": "許兆鈞"
+    },
+    {
+      "number": "28",
+      "name": "蔡尚恆"
+    },
+    {
+      "number": "35",
+      "name": "鄧宧程"
+    },
+    {
+      "number": "45",
+      "name": "林奕暘"
+    },
+    {
+      "number": "29",
+      "name": "王凱晟"
+    },
+    {
+      "number": "8",
+      "name": "劉志聰"
+    },
+    {
+      "number": "0",
+      "name": "潘國弘"
+    },
+    {
+      "number": "18",
+      "name": "陳俊霖"
+    },
+    {
+      "number": "56",
+      "name": "謝裕璿"
+    }
+  ],
+  "材料": [
+    {
+      "number": "球員背號",
+      "name": "球員姓名"
+    },
+    {
+      "number": "18",
+      "name": "劉宇軒"
+    },
+    {
+      "number": "23",
+      "name": "吳昱緯"
+    },
+    {
+      "number": "24",
+      "name": "李承澤"
+    },
+    {
+      "number": "6",
+      "name": "陳敬文"
+    },
+    {
+      "number": "66",
+      "name": "陳韋勳"
+    },
+    {
+      "number": "9",
+      "name": "翁勗倫"
+    },
+    {
+      "number": "0",
+      "name": "田伊恩"
+    },
+    {
+      "number": "8",
+      "name": "盧柏叡"
+    },
+    {
+      "number": "36",
+      "name": "楊鎧瑭"
+    }
+  ],
+  "機械": [
+    {
+      "number": "15",
+      "name": "吳書維"
+    },
+    {
+      "number": "7",
+      "name": "李坤修"
+    },
+    {
+      "number": "16",
+      "name": "林韋丞"
+    },
+    {
+      "number": "45",
+      "name": "林仕淳"
+    },
+    {
+      "number": "10",
+      "name": "蕭子勛"
+    },
+    {
+      "number": "3",
+      "name": "彭允杰"
+    },
+    {
+      "number": "69",
+      "name": "苗博恩"
+    },
+    {
+      "number": "8",
+      "name": "滕樹人"
+    },
+    {
+      "number": "20",
+      "name": "郭愷"
+    },
+    {
+      "number": "17",
+      "name": "羅凡"
+    },
+    {
+      "number": "18",
+      "name": "黃昶霖"
+    },
+    {
+      "number": "6",
+      "name": "曾祺賢"
+    },
+    {
+      "number": "77",
+      "name": "葉沛哲"
+    },
+    {
+      "number": "31",
+      "name": "黃暐閎"
+    },
+    {
+      "number": "5",
+      "name": "李圯禾"
+    },
+    {
+      "number": "21",
+      "name": "李國羽"
+    },
+    {
+      "number": "0",
+      "name": "陳彥佑"
+    },
+    {
+      "number": "34",
+      "name": "籃翊綸"
+    }
+  ],
+  "資工": [
+    {
+      "number": "2",
+      "name": "蔣忻勳"
+    },
+    {
+      "number": "66",
+      "name": "楊弘奕"
+    },
+    {
+      "number": "6",
+      "name": "徐睿廷"
+    },
+    {
+      "number": "1",
+      "name": "李京諺"
+    },
+    {
+      "number": "30",
+      "name": "楊竣喆"
+    },
+    {
+      "number": "29",
+      "name": "郭宗信"
+    },
+    {
+      "number": "7",
+      "name": "朱柏勳"
+    },
+    {
+      "number": "10",
+      "name": "郭元佐"
+    },
+    {
+      "number": "0",
+      "name": "施衍戎"
+    },
+    {
+      "number": "44",
+      "name": "劉昀翰"
+    },
+    {
+      "number": "3",
+      "name": "胡享博"
+    },
+    {
+      "number": "13",
+      "name": "許廷聿"
+    },
+    {
+      "number": "16",
+      "name": "呂宥甫"
+    },
+    {
+      "number": "19",
+      "name": "陳冠智"
+    },
+    {
+      "number": "45",
+      "name": "丘文碩"
+    },
+    {
+      "number": "23",
+      "name": "陳泓淯"
+    },
+    {
+      "number": "49",
+      "name": "黃毓為"
+    },
+    {
+      "number": "55",
+      "name": "楊子琛"
+    }
+  ],
+  "資財": [
+    {
+      "number": "11",
+      "name": "張詠翔"
+    },
+    {
+      "number": "19",
+      "name": "王子儀"
+    },
+    {
+      "number": "20",
+      "name": "劉家銘"
+    },
+    {
+      "number": "25",
+      "name": "江禮詮"
+    },
+    {
+      "number": "27",
+      "name": "陳昱安"
+    },
+    {
+      "number": "47",
+      "name": "余聖輝"
+    },
+    {
+      "number": "28",
+      "name": "吳柏諺"
+    },
+    {
+      "number": "15",
+      "name": "李頂源"
+    },
+    {
+      "number": "98",
+      "name": "蔡侑呈"
+    },
+    {
+      "number": "7",
+      "name": "張恩啟"
+    },
+    {
+      "number": "12",
+      "name": "蔡承翰"
+    },
+    {
+      "number": "69",
+      "name": "莊秉澔"
+    }
+  ],
+  "運管": [
+    {
+      "number": "56",
+      "name": "吳東平"
+    },
+    {
+      "number": "7",
+      "name": "游宇桓"
+    },
+    {
+      "number": "95",
+      "name": "王振嘉"
+    },
+    {
+      "number": "29",
+      "name": "溫非凡"
+    },
+    {
+      "number": "0",
+      "name": "楊直諺"
+    },
+    {
+      "number": "1",
+      "name": "鐘周諏"
+    },
+    {
+      "number": "10",
+      "name": "曾亮"
+    },
+    {
+      "number": "12",
+      "name": "陳亮宇"
+    },
+    {
+      "number": "32",
+      "name": "鄭丞恩"
+    },
+    {
+      "number": "5",
+      "name": "陳世翔"
+    },
+    {
+      "number": "17",
+      "name": "許瑋宸"
+    },
+    {
+      "number": "77",
+      "name": "姚仲仁"
+    },
+    {
+      "number": "54",
+      "name": "高若平"
+    },
+    {
+      "number": "3",
+      "name": "陳則安"
+    },
+    {
+      "number": "30",
+      "name": "何炳翰"
+    },
+    {
+      "number": "21",
+      "name": "張肯銘"
+    },
+    {
+      "number": "2",
+      "name": "王柏允"
+    },
+    {
+      "number": "14",
+      "name": "陳凱威"
+    }
+  ],
+  "電機A": [
+    {
+      "number": "15",
+      "name": "陳帛均"
+    },
+    {
+      "number": "27",
+      "name": "許仁宇"
+    },
+    {
+      "number": "71",
+      "name": "張赫豐"
+    },
+    {
+      "number": "39",
+      "name": "賴冠宇"
+    },
+    {
+      "number": "0",
+      "name": "伊凡"
+    },
+    {
+      "number": "30",
+      "name": "陳烜佑"
+    },
+    {
+      "number": "26",
+      "name": "陳庭毅"
+    },
+    {
+      "number": "11",
+      "name": "李允翔"
+    },
+    {
+      "number": "1",
+      "name": "李後燁"
+    },
+    {
+      "number": "16",
+      "name": "蔣奇勳"
+    },
+    {
+      "number": "77",
+      "name": "蘇家緯"
+    },
+    {
+      "number": "29",
+      "name": "陳亭瑞"
+    },
+    {
+      "number": "12",
+      "name": "張懷升"
+    },
+    {
+      "number": "49",
+      "name": "曾竑誠"
+    },
+    {
+      "number": "18",
+      "name": "邱琮憲"
+    },
+    {
+      "number": "21",
+      "name": "游嘉豪"
+    },
+    {
+      "number": "99",
+      "name": "傅宥程"
+    },
+    {
+      "number": "4",
+      "name": "鍾禮任"
+    },
+    {
+      "number": "28",
+      "name": "趙柏勛"
+    },
+    {
+      "number": "7",
+      "name": "汪靖哲"
+    },
+    {
+      "number": "14",
+      "name": "徐崬隼"
+    }
+  ],
+  "電機B": [
+    {
+      "number": "6",
+      "name": "李定澄"
+    },
+    {
+      "number": "8",
+      "name": "白凱"
+    },
+    {
+      "number": "23",
+      "name": "紀科宇"
+    },
+    {
+      "number": "12",
+      "name": "張懷升"
+    },
+    {
+      "number": "5",
+      "name": "黃惟昱"
+    },
+    {
+      "number": "70",
+      "name": "陳宥銘"
+    },
+    {
+      "number": "88",
+      "name": "林俊澔"
+    },
+    {
+      "number": "13",
+      "name": "邱逸翔"
+    },
+    {
+      "number": "19",
+      "name": "黃俊翰"
+    },
+    {
+      "number": "45",
+      "name": "高哲彥"
+    },
+    {
+      "number": "25",
+      "name": "陳冠鈞"
+    },
+    {
+      "number": "35",
+      "name": "林士傑"
+    },
+    {
+      "number": "2",
+      "name": "蘇千瀚"
+    },
+    {
+      "number": "62",
+      "name": "黃梓宸"
+    },
+    {
+      "number": "69",
+      "name": "鄭笠渝"
+    },
+    {
+      "number": "22",
+      "name": "董品杉"
+    },
+    {
+      "number": "43",
+      "name": "黃俊維"
+    },
+    {
+      "number": "86",
+      "name": "彭鈺棋"
+    },
+    {
+      "number": "10",
+      "name": "潘品勳"
+    },
+    {
+      "number": "34",
+      "name": "黃稟恩"
+    },
+    {
+      "number": "3",
+      "name": "王博生"
+    }
+  ],
+  "電物": [
+    {
+      "number": "26",
+      "name": "李秉諺"
+    },
+    {
+      "number": "25",
+      "name": "陳璽安"
+    },
+    {
+      "number": "3",
+      "name": "范鈞皓"
+    },
+    {
+      "number": "5",
+      "name": "李冠廷"
+    },
+    {
+      "number": "4",
+      "name": "黃品哲"
+    },
+    {
+      "number": "6",
+      "name": "黃國翔"
+    },
+    {
+      "number": "20",
+      "name": "賈新彥"
+    },
+    {
+      "number": "8",
+      "name": "游世宸"
+    },
+    {
+      "number": "17",
+      "name": "鄒孟倬"
+    },
+    {
+      "number": "66",
+      "name": "蔡力恆"
+    },
+    {
+      "number": "32",
+      "name": "高睿辰"
+    }
+  ],
+  "電研A": [
+    {
+      "number": "10",
+      "name": "黃御銘"
+    },
+    {
+      "number": "5",
+      "name": "邱顯能"
+    },
+    {
+      "number": "21",
+      "name": "吳承駿"
+    },
+    {
+      "number": "69",
+      "name": "林聖翔"
+    },
+    {
+      "number": "13",
+      "name": "余睿哲"
+    },
+    {
+      "number": "66",
+      "name": "簡浩哲"
+    },
+    {
+      "number": "15",
+      "name": "周俞廷"
+    },
+    {
+      "number": "17",
+      "name": "潘柏均"
+    },
+    {
+      "number": "47",
+      "name": "蘇彥文"
+    },
+    {
+      "number": "11",
+      "name": "黃子濬"
+    },
+    {
+      "number": "14",
+      "name": "范士朋"
+    },
+    {
+      "number": "98",
+      "name": "洪秉旭"
+    },
+    {
+      "number": "77",
+      "name": "劉嘉恩"
+    },
+    {
+      "number": "35",
+      "name": "羅承彥"
+    },
+    {
+      "number": "23",
+      "name": "郭立朋"
+    },
+    {
+      "number": "88",
+      "name": "林昱宏"
+    },
+    {
+      "number": "71",
+      "name": "施丞謙"
+    },
+    {
+      "number": "20",
+      "name": "倪世樺"
+    },
+    {
+      "number": "8",
+      "name": "周承霖"
+    },
+    {
+      "number": "3",
+      "name": "楊宇竣"
+    }
+  ],
+  "電研B": [
+    {
+      "number": "17",
+      "name": "周冠佑"
+    },
+    {
+      "number": "25",
+      "name": "陳威云"
+    },
+    {
+      "number": "36",
+      "name": "李名瑋"
+    },
+    {
+      "number": "84",
+      "name": "鍾佳錡"
+    },
+    {
+      "number": "91",
+      "name": "張揚"
+    },
+    {
+      "number": "45",
+      "name": "簡盈任"
+    },
+    {
+      "number": "32",
+      "name": "楊詔宇"
+    },
+    {
+      "number": "6",
+      "name": "呂欣擇"
+    },
+    {
+      "number": "0",
+      "name": "黃聖庭"
+    },
+    {
+      "number": "89",
+      "name": "林詠倫"
+    },
+    {
+      "number": "8",
+      "name": "黃冠綸"
+    },
+    {
+      "number": "7",
+      "name": "陳律言"
+    },
+    {
+      "number": "18",
+      "name": "許為鈞"
+    },
+    {
+      "number": "100(00)",
+      "name": "葉睿顒"
+    },
+    {
+      "number": "4",
+      "name": "黃宇浩"
+    },
+    {
+      "number": "30",
+      "name": "楊祐豪"
+    },
+    {
+      "number": "16",
+      "name": "趙冠瑋"
+    },
+    {
+      "number": "50",
+      "name": "陳昱維"
+    },
+    {
+      "number": "9",
+      "name": "林晏旭"
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="交大籃球聯盟計分板 — Basketball Scoreboard">
+  <title>籃球計分板</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ==================== HOME PAGE ==================== -->
+  <div id="page-home" class="page active">
+    <button class="btn-fullscreen" onclick="toggleFullscreen()">全螢幕</button>
+
+    <div class="home-content">
+      <div class="team-select-row">
+        <div class="team-dropdown-wrapper">
+          <select id="select-team-left" class="team-dropdown">
+            <option value="">選擇隊伍</option>
+          </select>
+        </div>
+        <span class="vs-x">✕</span>
+        <div class="team-dropdown-wrapper">
+          <select id="select-team-right" class="team-dropdown">
+            <option value="">選擇隊伍</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="role-select-row">
+        <span class="role-label">Your Task:</span>
+        <div class="role-buttons">
+          <button id="btn-role-a" class="btn-role" data-role="A" onclick="selectRole('A')">
+            <span class="role-letter">A</span>
+            <span class="role-desc">分數大錶</span>
+          </button>
+          <button id="btn-role-b" class="btn-role" data-role="B" onclick="selectRole('B')">
+            <span class="role-letter">B</span>
+            <span class="role-desc">犯規小錶</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="home-buttons-row">
+        <button class="btn-new-game" onclick="newGame()">New Game</button>
+        <button id="btn-enter" class="btn-enter" onclick="enterRole()">Enter</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE A — Score & Main Timer ==================== -->
+  <div id="page-a" class="page">
+    <!-- Top right: quarter, back, fullscreen -->
+    <div class="page-corner-controls">
+      <div class="quarter-section" onclick="cycleQuarter('a')" title="點擊切換節數">
+        <span id="quarter-a-num" class="quarter-num">1</span>
+        <span class="quarter-dot">.</span>
+        <span class="quarter-label">節</span>
+      </div>
+      <button class="btn-back" onclick="goHome()">↩</button>
+      <button class="btn-fullscreen-inline" onclick="toggleFullscreen()">全螢幕</button>
+    </div>
+
+    <!-- Timer at top center -->
+    <div class="page-a-timer-bar">
+      <span class="role-badge">A</span>
+      <div id="timer-a-display" class="timer-display timer-red" onclick="editMainTimer()">
+        <span id="timer-a-min" class="timer-digit">10</span>
+        <span class="timer-colon">:</span>
+        <span id="timer-a-sec" class="timer-digit">00</span>
+      </div>
+    </div>
+
+    <!-- Score area -->
+    <div class="scoreboard">
+      <div class="score-side score-left">
+        <div class="score-buttons-col">
+          <button class="btn-score-plus" onclick="addScore('left', 1)">+1</button>
+          <button class="btn-score-plus" onclick="addScore('left', 2)">+2</button>
+          <button class="btn-score-plus" onclick="addScore('left', 3)">+3</button>
+        </div>
+        <div class="score-inner">
+          <div id="team-name-left-a" class="team-name-display">隊伍A</div>
+          <div id="score-left" class="score-value score-green">0</div>
+          <div class="score-minus-row">
+            <button class="btn-score-minus" onclick="addScore('left', -3)">-3</button>
+            <button class="btn-score-minus" onclick="addScore('left', -2)">-2</button>
+            <button class="btn-score-minus" onclick="addScore('left', -1)">-1</button>
+          </div>
+        </div>
+      </div>
+
+      <span class="vs-x-large">✕</span>
+
+      <div class="score-side score-right">
+        <div class="score-inner">
+          <div id="team-name-right-a" class="team-name-display">隊伍B</div>
+          <div id="score-right" class="score-value score-green">0</div>
+          <div class="score-minus-row">
+            <button class="btn-score-minus" onclick="addScore('right', -1)">-1</button>
+            <button class="btn-score-minus" onclick="addScore('right', -2)">-2</button>
+            <button class="btn-score-minus" onclick="addScore('right', -3)">-3</button>
+          </div>
+        </div>
+        <div class="score-buttons-col">
+          <button class="btn-score-plus" onclick="addScore('right', 1)">+1</button>
+          <button class="btn-score-plus" onclick="addScore('right', 2)">+2</button>
+          <button class="btn-score-plus" onclick="addScore('right', 3)">+3</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Play/Pause below the scoreboard -->
+    <div class="page-a-bottom-bar">
+      <button id="btn-timer-a-toggle" class="btn-play-large" onclick="toggleMainTimer()">▶</button>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE B — Fouls & Shot Clock ==================== -->
+  <div id="page-b" class="page">
+    <div class="page-b-layout">
+      <!-- Left: Player List -->
+      <div class="player-panel player-panel-left">
+        <div class="panel-team-header" id="panel-header-left">隊伍A</div>
+        <div class="player-list" id="player-list-left"></div>
+      </div>
+
+      <!-- Center: controls above, shot clock + fouls below -->
+      <div class="page-b-center">
+
+        <!-- Top control bar: quarter, back, fullscreen — above shot clock -->
+        <div class="page-b-top-controls">
+          <div class="quarter-section" onclick="cycleQuarter('b')" title="點擊切換節數">
+            <span class="quarter-label">第</span>
+            <span id="quarter-b-num" class="quarter-num">1</span>
+            <span class="quarter-label">節</span>
+          </div>
+          <button class="btn-back" onclick="goHome()">↩</button>
+          <button class="btn-fullscreen-inline" onclick="toggleFullscreen()">全螢幕</button>
+        </div>
+
+        <!-- Shot clock row -->
+        <div class="shot-clock-row">
+          <span class="role-badge">B</span>
+          <div id="shot-clock-display" class="timer-display timer-yellow" onclick="editShotClock()">
+            <span id="shot-clock-val">24.0</span>
+          </div>
+        </div>
+
+        <!-- Team Fouls (auto-sum per quarter) -->
+        <div class="team-fouls-area">
+          <div class="team-labels-row">
+            <span id="team-name-left-b" class="team-label-b">隊伍A</span>
+            <span id="team-name-right-b" class="team-label-b">隊伍B</span>
+          </div>
+          <h2 class="fouls-title">Fouls</h2>
+          <div class="team-fouls-row">
+            <div id="team-foul-left" class="foul-value foul-yellow">0</div>
+            <span class="foul-x">✕</span>
+            <div id="team-foul-right" class="foul-value foul-yellow">0</div>
+          </div>
+        </div>
+
+        <!-- Possession Arrows -->
+        <div class="possession-row">
+          <button class="btn-possession" id="btn-poss-left" onclick="togglePossession('left')">◀</button>
+          <span class="possession-label">球權</span>
+          <button class="btn-possession" id="btn-poss-right" onclick="togglePossession('right')">▶</button>
+        </div>
+
+        <!-- Shot clock reset buttons + play, all in one row -->
+        <div class="shot-clock-controls">
+          <button class="btn-shot-reset" onclick="resetShotClock(14)">14</button>
+          <button class="btn-shot-reset" onclick="resetShotClock(24)">24</button>
+          <button id="btn-shot-toggle" class="btn-play" onclick="toggleShotClock()">▶</button>
+        </div>
+      </div>
+
+      <!-- Right: Player List -->
+      <div class="player-panel player-panel-right">
+        <div class="panel-team-header" id="panel-header-right">隊伍B</div>
+        <div class="player-list" id="player-list-right"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Timer Edit Modal (iPhone-style scroll picker) ==================== -->
+  <div id="timer-edit-modal" class="modal-overlay" style="display:none;" onclick="onModalOverlayClick(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <h3 id="modal-title">編輯時間</h3>
+      <div class="picker-container">
+        <div class="picker-column" id="picker-col-min">
+          <div class="picker-highlight"></div>
+          <div class="picker-scroll" id="picker-min-scroll"></div>
+          <label class="picker-label">分</label>
+        </div>
+        <span class="picker-colon" id="picker-colon-sep">:</span>
+        <div class="picker-column" id="picker-col-sec">
+          <label class="picker-label">秒</label>
+          <div class="picker-highlight"></div>
+          <div class="picker-scroll" id="picker-sec-scroll"></div>
+        </div>
+        <span class="picker-dot" id="picker-dot-sep">.</span>
+        <div class="picker-column" id="picker-col-tenth">
+          <div class="picker-highlight"></div>
+          <div class="picker-scroll" id="picker-tenth-scroll"></div>
+          <label class="picker-label">0.1s</label>
+        </div>
+      </div>
+      <div class="modal-buttons">
+        <button class="btn-modal-confirm" onclick="confirmTimerEdit()">確認</button>
+        <button class="btn-modal-cancel" onclick="closeTimerModal()">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
