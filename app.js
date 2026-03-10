@@ -254,6 +254,29 @@ function addScore(side, amount) {
   saveState();
 }
 
+function swapScores() {
+  // Swap scores
+  const temp = scoreLeft;
+  scoreLeft = scoreRight;
+  scoreRight = temp;
+  document.getElementById('score-left').textContent = scoreLeft;
+  document.getElementById('score-right').textContent = scoreRight;
+
+  // Swap team names on Page A
+  const nameLeftEl = document.getElementById('team-name-left-a');
+  const nameRightEl = document.getElementById('team-name-right-a');
+  const tempName = nameLeftEl.textContent;
+  nameLeftEl.textContent = nameRightEl.textContent;
+  nameRightEl.textContent = tempName;
+
+  // Swap the internal selected teams
+  const tempTeam = selectedTeamLeft;
+  selectedTeamLeft = selectedTeamRight;
+  selectedTeamRight = tempTeam;
+
+  saveState();
+}
+
 // ---- Quarter ----
 function cycleQuarter(page) {
   if (page === 'a') {
@@ -691,41 +714,3 @@ function registerServiceWorker() {
   }
 }
 
-// ---- Orientation and Auto-Scaling ----
-function updateAutoScale() {
-  const pages = document.querySelectorAll('.page');
-  const vw = window.innerWidth;
-  const vh = window.innerHeight;
-
-  const isPortrait = vw < vh;
-  const longEdge = Math.max(vw, vh);
-  const shortEdge = Math.min(vw, vh);
-
-  const baseWidth = 1100;
-  const baseHeight = 700;
-
-  const scaleX = longEdge / baseWidth;
-  const scaleY = shortEdge / baseHeight;
-  const scale = Math.min(scaleX, scaleY, 1.2);
-
-  pages.forEach(page => {
-    // If user's device is in portrait mode, we rotate the UI 90 degrees to force landscape view
-    // By dividing screen dimensions by the scale, we create a perfectly fitted logical canvas
-    if (isPortrait) {
-      page.style.width = `${vh / scale}px`;
-      page.style.height = `${vw / scale}px`;
-      page.style.transform = `translate(-50%, -50%) rotate(90deg) scale(${scale})`;
-    } else {
-      page.style.width = `${vw / scale}px`;
-      page.style.height = `${vh / scale}px`;
-      page.style.transform = `translate(-50%, -50%) scale(${scale})`;
-    }
-  });
-}
-
-window.addEventListener('resize', updateAutoScale);
-window.addEventListener('load', updateAutoScale);
-window.addEventListener('orientationchange', () => {
-  setTimeout(updateAutoScale, 200);
-});
-updateAutoScale();

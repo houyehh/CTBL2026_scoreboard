@@ -59,27 +59,7 @@
 
   <!-- ==================== PAGE A — Score & Main Timer ==================== -->
   <div id="page-a" class="page">
-    <!-- Top right: quarter, back, fullscreen -->
-    <div class="page-corner-controls">
-      <div class="quarter-section" onclick="cycleQuarter('a')" title="點擊切換節數">
-        <span class="quarter-label">第</span>
-        <span id="quarter-a-num" class="quarter-num">1</span>
-        <span class="quarter-label">節</span>
-      </div>
-      <button class="btn-back" onclick="goHome()">↩</button>
-    </div>
-
-    <!-- Timer at top center -->
-    <div class="page-a-timer-bar">
-      <span class="role-badge">A</span>
-      <div id="timer-a-display" class="timer-display timer-red" onclick="editMainTimer()">
-        <span id="timer-a-min" class="timer-digit">10</span>
-        <span class="timer-colon">:</span>
-        <span id="timer-a-sec" class="timer-digit">00</span>
-      </div>
-    </div>
-
-    <!-- Score area -->
+    <!-- Score area — fills remaining space -->
     <div class="scoreboard">
       <div class="score-side score-left">
         <div class="score-buttons-col">
@@ -91,14 +71,30 @@
           <div id="team-name-left-a" class="team-name-display">隊伍A</div>
           <div id="score-left" class="score-value score-green">0</div>
           <div class="score-minus-row">
-            <button class="btn-score-minus" onclick="addScore('left', -3)">-3</button>
-            <button class="btn-score-minus" onclick="addScore('left', -2)">-2</button>
             <button class="btn-score-minus" onclick="addScore('left', -1)">-1</button>
           </div>
         </div>
       </div>
 
-      <span class="vs-x-large">✕</span>
+      <!-- Center column: timer + play/pause + swap -->
+      <div class="score-center-col">
+        <div class="page-a-timer-bar">
+          <button class="btn-back" onclick="goHome()">↩</button>
+          <span class="role-badge">A</span>
+          <div class="quarter-section" onclick="cycleQuarter('a')" title="點擊切換節數">
+            <span class="quarter-label">第</span>
+            <span id="quarter-a-num" class="quarter-num">1</span>
+            <span class="quarter-label">節</span>
+          </div>
+        </div>
+        <div id="timer-a-display" class="timer-display timer-red" onclick="editMainTimer()">
+          <span id="timer-a-min" class="timer-digit">10</span>
+          <span class="timer-colon">:</span>
+          <span id="timer-a-sec" class="timer-digit">00</span>
+        </div>
+        <button id="btn-timer-a-toggle" class="btn-play-large" onclick="toggleMainTimer()">▶</button>
+        <button class="btn-swap" onclick="swapScores()" title="交換左右">⇄</button>
+      </div>
 
       <div class="score-side score-right">
         <div class="score-inner">
@@ -106,8 +102,6 @@
           <div id="score-right" class="score-value score-green">0</div>
           <div class="score-minus-row">
             <button class="btn-score-minus" onclick="addScore('right', -1)">-1</button>
-            <button class="btn-score-minus" onclick="addScore('right', -2)">-2</button>
-            <button class="btn-score-minus" onclick="addScore('right', -3)">-3</button>
           </div>
         </div>
         <div class="score-buttons-col">
@@ -116,11 +110,6 @@
           <button class="btn-score-plus" onclick="addScore('right', 3)">+3</button>
         </div>
       </div>
-    </div>
-
-    <!-- Play/Pause below the scoreboard -->
-    <div class="page-a-bottom-bar">
-      <button id="btn-timer-a-toggle" class="btn-play-large" onclick="toggleMainTimer()">▶</button>
     </div>
   </div>
 
@@ -138,12 +127,12 @@
 
         <!-- Top control bar: quarter, back, fullscreen — above shot clock -->
         <div class="page-b-top-controls">
+          <button class="btn-back" onclick="goHome()">↩</button>
           <div class="quarter-section" onclick="cycleQuarter('b')" title="點擊切換節數">
             <span class="quarter-label">第</span>
             <span id="quarter-b-num" class="quarter-num">1</span>
             <span class="quarter-label">節</span>
           </div>
-          <button class="btn-back" onclick="goHome()">↩</button>
         </div>
 
         <!-- Shot clock row -->
