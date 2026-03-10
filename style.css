@@ -325,6 +325,7 @@ body {
   background: #0a0a0a;
   align-items: center;
   justify-content: flex-start;
+  padding: 0;
 }
 
 /* Timer bar — fixed strip at top center */
@@ -371,9 +372,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 0 12px;
+  padding: 0 20px;
   width: 100%;
-  max-width: 1200px;
   flex: 1;
 }
 
@@ -510,6 +510,7 @@ body {
 #page-b {
   flex-direction: column;
   background: #0a0a0a;
+  padding: 0;
 }
 
 .page-b-layout {
@@ -520,8 +521,8 @@ body {
 
 /* Player panels (both sides) */
 .player-panel {
-  width: 360px;
-  min-width: 300px;
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -649,7 +650,7 @@ body {
 
 /* Page B center area */
 .page-b-center {
-  flex: 1;
+  flex: 1.2;
   display: flex;
   flex-direction: column;
   align-items: center;
