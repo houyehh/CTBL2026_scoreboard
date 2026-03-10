@@ -697,9 +697,10 @@ function updateAutoScale() {
   const vw = window.innerWidth;
   const vh = window.innerHeight;
 
-  // Always assume landscape: long edge = width, short edge = height
+  const isPortrait = vw < vh;
   const longEdge = Math.max(vw, vh);
   const shortEdge = Math.min(vw, vh);
+
   const baseWidth = 1100;
   const baseHeight = 700;
 
@@ -708,7 +709,17 @@ function updateAutoScale() {
   const scale = Math.min(scaleX, scaleY, 1.2);
 
   pages.forEach(page => {
-    page.style.setProperty('--app-scale', scale);
+    // If user's device is in portrait mode, we rotate the UI 90 degrees to force landscape view
+    // By dividing screen dimensions by the scale, we create a perfectly fitted logical canvas
+    if (isPortrait) {
+      page.style.width = `${vh / scale}px`;
+      page.style.height = `${vw / scale}px`;
+      page.style.transform = `translate(-50%, -50%) rotate(90deg) scale(${scale})`;
+    } else {
+      page.style.width = `${vw / scale}px`;
+      page.style.height = `${vh / scale}px`;
+      page.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    }
   });
 }
 
