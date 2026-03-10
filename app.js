@@ -709,12 +709,13 @@ function updateAutoScale() {
   const vh = window.innerHeight;
 
   pages.forEach(page => {
-    const isLandscape = vw > vh;
-    const baseWidth = isLandscape ? 1100 : 700;
-    const baseHeight = isLandscape ? 700 : 1000;
+    // 一律預設橫向比例 (1100x700)
+    const baseWidth = 1100;
+    const baseHeight = 700;
 
     const scaleX = vw / baseWidth;
     const scaleY = vh / baseHeight;
+    // 取較小比例以確保介面在任何情況下都能完整顯示
     const scale = Math.min(scaleX, scaleY, 1.2);
 
     page.style.setProperty('--app-scale', scale);
