@@ -91,26 +91,6 @@ body {
 /* ============================
    SHARED BUTTONS
    ============================ */
-.btn-fullscreen {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 6px 14px;
-  background: transparent;
-  border: 2px solid #fff;
-  color: #fff;
-  font-size: 14px;
-  font-family: 'Noto Sans TC', sans-serif;
-  cursor: pointer;
-  border-radius: 4px;
-  z-index: 100;
-  transition: background 0.2s;
-}
-
-.btn-fullscreen:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
 /* Corner controls group for A & B pages */
 .page-corner-controls {
   position: absolute;
@@ -122,22 +102,6 @@ body {
   z-index: 100;
 }
 
-.btn-fullscreen-inline {
-  padding: 6px 12px;
-  background: transparent;
-  border: 2px solid #555;
-  color: #aaa;
-  font-size: 12px;
-  font-family: 'Noto Sans TC', sans-serif;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.2s;
-}
-
-.btn-fullscreen-inline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-}
 
 .btn-back {
   padding: 6px 12px;
@@ -203,10 +167,6 @@ body {
 
 .quarter-num:hover {
   color: #ffdd00;
-}
-
-.quarter-dot {
-  font-size: 22px;
 }
 
 .quarter-label {
@@ -491,8 +451,8 @@ body {
 }
 
 .btn-score-plus {
-  width: 48px;
-  height: 48px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border: 2px solid #ccc;
   background: rgba(255, 255, 255, 0.08);

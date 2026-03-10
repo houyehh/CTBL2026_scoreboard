@@ -169,17 +169,6 @@ function setupKeyboard() {
   });
 }
 
-// ---- Fullscreen ----
-function toggleFullscreen() {
-  const el = document.documentElement;
-  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-    if (el.requestFullscreen) el.requestFullscreen().catch(() => { });
-    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-  } else {
-    if (document.exitFullscreen) document.exitFullscreen().catch(() => { });
-    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-  }
-}
 
 // ============================================================
 // PAGE A — Main Timer & Scoring
@@ -708,16 +697,17 @@ function updateAutoScale() {
   const vw = window.innerWidth;
   const vh = window.innerHeight;
 
+  // Always assume landscape: long edge = width, short edge = height
+  const longEdge = Math.max(vw, vh);
+  const shortEdge = Math.min(vw, vh);
+  const baseWidth = 1100;
+  const baseHeight = 700;
+
+  const scaleX = longEdge / baseWidth;
+  const scaleY = shortEdge / baseHeight;
+  const scale = Math.min(scaleX, scaleY, 1.2);
+
   pages.forEach(page => {
-    // 一律預設橫向比例 (1100x700)
-    const baseWidth = 1100;
-    const baseHeight = 700;
-
-    const scaleX = vw / baseWidth;
-    const scaleY = vh / baseHeight;
-    // 取較小比例以確保介面在任何情況下都能完整顯示
-    const scale = Math.min(scaleX, scaleY, 1.2);
-
     page.style.setProperty('--app-scale', scale);
   });
 }

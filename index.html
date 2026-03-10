@@ -20,7 +20,6 @@
 
   <!-- ==================== HOME PAGE ==================== -->
   <div id="page-home" class="page active">
-    <button class="btn-fullscreen" onclick="toggleFullscreen()">全螢幕</button>
 
     <div class="home-content">
       <div class="team-select-row">
@@ -63,12 +62,11 @@
     <!-- Top right: quarter, back, fullscreen -->
     <div class="page-corner-controls">
       <div class="quarter-section" onclick="cycleQuarter('a')" title="點擊切換節數">
+        <span class="quarter-label">第</span>
         <span id="quarter-a-num" class="quarter-num">1</span>
-        <span class="quarter-dot">.</span>
         <span class="quarter-label">節</span>
       </div>
       <button class="btn-back" onclick="goHome()">↩</button>
-      <button class="btn-fullscreen-inline" onclick="toggleFullscreen()">全螢幕</button>
     </div>
 
     <!-- Timer at top center -->
@@ -146,7 +144,6 @@
             <span class="quarter-label">節</span>
           </div>
           <button class="btn-back" onclick="goHome()">↩</button>
-          <button class="btn-fullscreen-inline" onclick="toggleFullscreen()">全螢幕</button>
         </div>
 
         <!-- Shot clock row -->
