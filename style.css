@@ -3,13 +3,16 @@
    ======================================================== */
 
 /* Reset */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -19,6 +22,10 @@ html, body {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ---- Page System ---- */
@@ -27,9 +34,20 @@ html, body {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px;
+  /* Auto-scaling support */
+  transform: scale(var(--app-scale, 1));
+  transform-origin: center center;
 }
-.page.active { display: flex; }
+
+.page.active {
+  display: flex;
+}
 
 /* ============================
    LED / Digital font styles
@@ -37,28 +55,46 @@ html, body {
 @font-face {
   font-family: 'DSEG7';
   src: url('https://cdn.jsdelivr.net/npm/dseg@0.46.0/fonts/DSEG7-Classic/DSEG7Classic-Bold.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/npm/dseg@0.46.0/fonts/DSEG7-Classic/DSEG7Classic-Bold.woff') format('woff');
+    url('https://cdn.jsdelivr.net/npm/dseg@0.46.0/fonts/DSEG7-Classic/DSEG7Classic-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
-.timer-display, .score-value, .foul-value {
+.timer-display,
+.score-value,
+.foul-value {
   font-family: 'DSEG7', 'Orbitron', monospace;
   letter-spacing: 2px;
 }
 
-.timer-red   { color: #ff3333; text-shadow: 0 0 14px rgba(255,50,50,0.7); }
-.timer-yellow { color: #ffdd00; text-shadow: 0 0 14px rgba(255,221,0,0.7); }
-.score-green { color: #33ff66; text-shadow: 0 0 14px rgba(50,255,100,0.7); }
-.foul-yellow { color: #ffdd00; text-shadow: 0 0 14px rgba(255,221,0,0.7); }
+.timer-red {
+  color: #ff3333;
+  text-shadow: 0 0 14px rgba(255, 50, 50, 0.7);
+}
+
+.timer-yellow {
+  color: #ffdd00;
+  text-shadow: 0 0 14px rgba(255, 221, 0, 0.7);
+}
+
+.score-green {
+  color: #33ff66;
+  text-shadow: 0 0 14px rgba(50, 255, 100, 0.7);
+}
+
+.foul-yellow {
+  color: #ffdd00;
+  text-shadow: 0 0 14px rgba(255, 221, 0, 0.7);
+}
 
 /* ============================
    SHARED BUTTONS
    ============================ */
 .btn-fullscreen {
   position: absolute;
-  top: 10px; right: 10px;
+  top: 10px;
+  right: 10px;
   padding: 6px 14px;
   background: transparent;
   border: 2px solid #fff;
@@ -70,12 +106,16 @@ html, body {
   z-index: 100;
   transition: background 0.2s;
 }
-.btn-fullscreen:hover { background: rgba(255,255,255,0.15); }
+
+.btn-fullscreen:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
 
 /* Corner controls group for A & B pages */
 .page-corner-controls {
   position: absolute;
-  top: 8px; right: 8px;
+  top: 8px;
+  right: 8px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -93,7 +133,11 @@ html, body {
   border-radius: 4px;
   transition: all 0.2s;
 }
-.btn-fullscreen-inline:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+.btn-fullscreen-inline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
 
 .btn-back {
   padding: 6px 12px;
@@ -106,10 +150,15 @@ html, body {
   border-radius: 4px;
   transition: all 0.2s;
 }
-.btn-back:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+.btn-back:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
 
 .btn-play {
-  width: 44px; height: 44px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 2px solid #fff;
   background: transparent;
@@ -122,7 +171,10 @@ html, body {
   transition: background 0.2s;
   flex-shrink: 0;
 }
-.btn-play:hover { background: rgba(255,255,255,0.15); }
+
+.btn-play:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
 
 .role-badge {
   font-family: 'Orbitron', sans-serif;
@@ -136,7 +188,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: 2px;
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 6px;
   padding: 4px 10px;
   font-weight: 700;
@@ -148,10 +200,19 @@ html, body {
   cursor: pointer;
   transition: color 0.2s;
 }
-.quarter-num:hover { color: #ffdd00; }
 
-.quarter-dot { font-size: 22px; }
-.quarter-label { font-size: 18px; font-family: 'Noto Sans TC', sans-serif; }
+.quarter-num:hover {
+  color: #ffdd00;
+}
+
+.quarter-dot {
+  font-size: 22px;
+}
+
+.quarter-label {
+  font-size: 18px;
+  font-family: 'Noto Sans TC', sans-serif;
+}
 
 /* ============================
    HOME PAGE
@@ -178,7 +239,7 @@ html, body {
 }
 
 .team-dropdown-wrapper {
-  border: 2px dashed rgba(255,255,255,0.6);
+  border: 2px dashed rgba(255, 255, 255, 0.6);
   border-radius: 8px;
   padding: 4px;
 }
@@ -195,9 +256,17 @@ html, body {
   border-radius: 4px;
   appearance: auto;
 }
-.team-dropdown option { background: #1a1a1a; color: #fff; }
 
-.vs-x { font-size: 36px; font-weight: 700; color: #fff; }
+.team-dropdown option {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.vs-x {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+}
 
 .role-select-row {
   display: flex;
@@ -205,8 +274,16 @@ html, body {
   gap: 24px;
 }
 
-.role-label { font-size: 28px; font-weight: 700; color: #fff; }
-.role-buttons { display: flex; gap: 32px; }
+.role-label {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.role-buttons {
+  display: flex;
+  gap: 32px;
+}
 
 .btn-role {
   display: flex;
@@ -221,15 +298,28 @@ html, body {
   padding: 12px 20px;
   border-radius: 12px;
 }
-.btn-role:hover { color: #fff; background: rgba(255,255,255,0.05); }
-.btn-role.selected {
+
+.btn-role:hover {
   color: #fff;
-  background: rgba(255,255,255,0.12);
-  box-shadow: 0 0 20px rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.role-letter { font-family: 'Orbitron', sans-serif; font-size: 64px; font-weight: 900; }
-.role-desc { font-size: 18px; font-family: 'Noto Sans TC', sans-serif; }
+.btn-role.selected {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.role-letter {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 64px;
+  font-weight: 900;
+}
+
+.role-desc {
+  font-size: 18px;
+  font-family: 'Noto Sans TC', sans-serif;
+}
 
 .home-buttons-row {
   display: flex;
@@ -249,7 +339,11 @@ html, body {
   border-radius: 8px;
   transition: all 0.2s;
 }
-.btn-enter:hover { background: #333; border-color: #888; }
+
+.btn-enter:hover {
+  background: #333;
+  border-color: #888;
+}
 
 .btn-new-game {
   background: transparent;
@@ -263,7 +357,10 @@ html, body {
   border-radius: 8px;
   transition: all 0.2s;
 }
-.btn-new-game:hover { background: rgba(255,68,68,0.15); }
+
+.btn-new-game:hover {
+  background: rgba(255, 68, 68, 0.15);
+}
 
 /* ============================
    PAGE A — Score + Main Timer
@@ -296,7 +393,8 @@ html, body {
 }
 
 .btn-play-large {
-  width: 64px; height: 64px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   border: 2px solid #fff;
   background: transparent;
@@ -308,7 +406,10 @@ html, body {
   justify-content: center;
   transition: background 0.2s;
 }
-.btn-play-large:hover { background: rgba(255,255,255,0.15); }
+
+.btn-play-large:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
 
 .scoreboard {
   display: flex;
@@ -326,14 +427,22 @@ html, body {
   font-weight: bold;
   display: flex;
   align-items: center;
-  border: 2px dashed rgba(255,255,255,0.3);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   padding: 4px 10px;
   cursor: pointer;
 }
 
-.timer-digit { min-width: 48px; text-align: center; }
-.timer-colon { font-size: 42px; color: inherit; margin: 0 2px; }
+.timer-digit {
+  min-width: 48px;
+  text-align: center;
+}
+
+.timer-colon {
+  font-size: 42px;
+  color: inherit;
+  margin: 0 2px;
+}
 
 .score-side {
   display: flex;
@@ -342,8 +451,13 @@ html, body {
   flex: 1;
 }
 
-.score-left { justify-content: flex-end; }
-.score-right { justify-content: flex-start; }
+.score-left {
+  justify-content: flex-end;
+}
+
+.score-right {
+  justify-content: flex-start;
+}
 
 .score-inner {
   display: flex;
@@ -356,7 +470,7 @@ html, body {
   font-size: 22px;
   font-weight: 700;
   padding: 6px 24px;
-  border: 2px dashed rgba(255,255,255,0.4);
+  border: 2px dashed rgba(255, 255, 255, 0.4);
   border-radius: 8px;
   text-align: center;
   min-width: 120px;
@@ -377,10 +491,11 @@ html, body {
 }
 
 .btn-score-plus {
-  width: 48px; height: 48px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: 2px solid #ccc;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   color: #fff;
   font-size: 18px;
   font-weight: 700;
@@ -388,16 +503,28 @@ html, body {
   transition: all 0.15s;
   font-family: 'Orbitron', sans-serif;
 }
-.btn-score-plus:hover { background: rgba(255,255,255,0.2); transform: scale(1.08); }
-.btn-score-plus:active { transform: scale(0.95); }
 
-.score-minus-row { display: flex; gap: 6px; margin-top: 4px; }
+.btn-score-plus:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.08);
+}
+
+.btn-score-plus:active {
+  transform: scale(0.95);
+}
+
+.score-minus-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
 
 .btn-score-minus {
-  width: 40px; height: 40px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 2px solid #ff4444;
-  background: rgba(255,68,68,0.15);
+  background: rgba(255, 68, 68, 0.15);
   color: #ff6666;
   font-size: 14px;
   font-weight: 700;
@@ -405,8 +532,15 @@ html, body {
   transition: all 0.15s;
   font-family: 'Orbitron', sans-serif;
 }
-.btn-score-minus:hover { background: rgba(255,68,68,0.3); transform: scale(1.08); }
-.btn-score-minus:active { transform: scale(0.95); }
+
+.btn-score-minus:hover {
+  background: rgba(255, 68, 68, 0.3);
+  transform: scale(1.08);
+}
+
+.btn-score-minus:active {
+  transform: scale(0.95);
+}
 
 .vs-x-large {
   font-size: 50px;
@@ -437,8 +571,14 @@ html, body {
   flex-direction: column;
   overflow: hidden;
 }
-.player-panel-left { border-right: 1px solid #333; }
-.player-panel-right { border-left: 1px solid #333; }
+
+.player-panel-left {
+  border-right: 1px solid #333;
+}
+
+.player-panel-right {
+  border-left: 1px solid #333;
+}
 
 .panel-team-header {
   padding: 8px 12px;
@@ -469,9 +609,17 @@ html, body {
 }
 
 /* Foul warning colors */
-.player-row.foul-3 { background: rgba(255,200,0,0.2); }
-.player-row.foul-4 { background: rgba(255,140,0,0.3); }
-.player-row.foul-5 { background: rgba(255,50,50,0.35); }
+.player-row.foul-3 {
+  background: rgba(255, 200, 0, 0.2);
+}
+
+.player-row.foul-4 {
+  background: rgba(255, 140, 0, 0.3);
+}
+
+.player-row.foul-5 {
+  background: rgba(255, 50, 50, 0.35);
+}
 
 .player-info {
   display: flex;
@@ -495,6 +643,9 @@ html, body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 11px;
+  /* Smaller for Page B names */
+  font-weight: 500;
 }
 
 .player-foul-controls {
@@ -505,10 +656,11 @@ html, body {
 }
 
 .btn-foul {
-  width: 28px; height: 28px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   border: 1.5px solid #888;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   color: #fff;
   font-size: 15px;
   font-weight: 700;
@@ -518,7 +670,10 @@ html, body {
   justify-content: center;
   transition: all 0.15s;
 }
-.btn-foul:hover { background: rgba(255,255,255,0.15); }
+
+.btn-foul:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
 
 .player-foul-total {
   font-family: 'Orbitron', sans-serif;
@@ -590,7 +745,10 @@ html, body {
   font-weight: 700;
 }
 
-.team-label-b { min-width: 60px; text-align: center; }
+.team-label-b {
+  min-width: 60px;
+  text-align: center;
+}
 
 .fouls-title {
   font-family: 'Orbitron', sans-serif;
@@ -619,7 +777,10 @@ html, body {
   background: rgba(255, 50, 50, 0.45);
 }
 
-.foul-x { font-size: 30px; color: #fff; }
+.foul-x {
+  font-size: 30px;
+  color: #fff;
+}
 
 /* Possession arrows */
 .possession-row {
@@ -636,8 +797,9 @@ html, body {
 }
 
 .btn-possession {
-  width: 44px; height: 36px;
-  background: rgba(255,50,50,0.15);
+  width: 44px;
+  height: 36px;
+  background: rgba(255, 50, 50, 0.15);
   border: 2px solid transparent;
   color: #666;
   font-size: 20px;
@@ -648,9 +810,13 @@ html, body {
   justify-content: center;
   transition: all 0.15s;
 }
-.btn-possession:hover { background: rgba(255,50,50,0.3); }
+
+.btn-possession:hover {
+  background: rgba(255, 50, 50, 0.3);
+}
+
 .btn-possession.active {
-  background: rgba(255,50,50,0.4);
+  background: rgba(255, 50, 50, 0.4);
   border-color: #ff4444;
   color: #ff4444;
 }
@@ -664,10 +830,11 @@ html, body {
 }
 
 .btn-shot-reset {
-  width: 52px; height: 52px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   border: 2px solid #33cc66;
-  background: rgba(50,204,100,0.1);
+  background: rgba(50, 204, 100, 0.1);
   color: #33cc66;
   font-size: 20px;
   font-weight: 700;
@@ -675,16 +842,22 @@ html, body {
   font-family: 'Orbitron', sans-serif;
   transition: all 0.15s;
 }
-.btn-shot-reset:hover { background: rgba(50,204,100,0.25); transform: scale(1.08); }
+
+.btn-shot-reset:hover {
+  background: rgba(50, 204, 100, 0.25);
+  transform: scale(1.08);
+}
 
 /* ============================
    iPhone-style Scroll Picker
    ============================ */
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.75);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -724,28 +897,36 @@ html, body {
 .picker-highlight {
   position: absolute;
   top: 50%;
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   height: 40px;
   transform: translateY(-50%);
-  border-top: 2px solid rgba(255,255,255,0.3);
-  border-bottom: 2px solid rgba(255,255,255,0.3);
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   pointer-events: none;
   z-index: 2;
 }
 
 .picker-scroll {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
-.picker-scroll::-webkit-scrollbar { display: none; }
+
+.picker-scroll::-webkit-scrollbar {
+  display: none;
+}
 
 /* Spacers are injected by JS to center first/last items */
 .picker-spacer {
-  height: 70px; /* (180px container - 40px item) / 2 */
+  height: 70px;
+  /* (180px container - 40px item) / 2 */
   flex-shrink: 0;
 }
 
@@ -762,6 +943,7 @@ html, body {
   opacity: 0.25;
   transition: opacity 0.1s, color 0.1s, transform 0.1s;
 }
+
 .picker-item.selected {
   opacity: 1;
   color: #ffdd00;
@@ -829,30 +1011,99 @@ html, body {
 }
 
 /* Player list scrollbar */
-.player-list::-webkit-scrollbar { width: 4px; }
-.player-list::-webkit-scrollbar-track { background: #111; }
-.player-list::-webkit-scrollbar-thumb { background: #444; border-radius: 2px; }
+.player-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.player-list::-webkit-scrollbar-track {
+  background: #111;
+}
+
+.player-list::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 2px;
+}
 
 /* Responsive */
 @media (max-width: 900px) {
-  .score-value { font-size: 64px; min-width: 100px; }
-  .timer-display { font-size: 30px; }
-  .timer-digit { min-width: 36px; }
-  .timer-colon { font-size: 30px; }
-  .team-name-display { font-size: 16px; padding: 4px 12px; }
-  .btn-score-plus { width: 38px; height: 38px; font-size: 14px; }
-  .btn-score-minus { width: 32px; height: 32px; font-size: 12px; }
-  .player-panel { width: 180px; min-width: 150px; }
-  .foul-value { font-size: 44px; }
-  #shot-clock-display { font-size: 36px; }
-  .role-badge { font-size: 20px; }
+  .score-value {
+    font-size: 64px;
+    min-width: 100px;
+  }
+
+  .timer-display {
+    font-size: 30px;
+  }
+
+  .timer-digit {
+    min-width: 36px;
+  }
+
+  .timer-colon {
+    font-size: 30px;
+  }
+
+  .team-name-display {
+    font-size: 16px;
+    padding: 4px 12px;
+  }
+
+  .btn-score-plus {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .btn-score-minus {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .player-panel {
+    width: 180px;
+    min-width: 150px;
+  }
+
+  .foul-value {
+    font-size: 44px;
+  }
+
+  #shot-clock-display {
+    font-size: 36px;
+  }
+
+  .role-badge {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 600px) {
-  .score-value { font-size: 44px; min-width: 70px; }
-  .vs-x-large { font-size: 28px; }
-  .role-letter { font-size: 40px; }
-  .player-panel { width: 140px; min-width: 120px; }
-  .player-info { font-size: 12px; }
-  .btn-foul { width: 24px; height: 24px; font-size: 13px; }
+  .score-value {
+    font-size: 44px;
+    min-width: 70px;
+  }
+
+  .vs-x-large {
+    font-size: 28px;
+  }
+
+  .role-letter {
+    font-size: 40px;
+  }
+
+  .player-panel {
+    width: 140px;
+    min-width: 120px;
+  }
+
+  .player-info {
+    font-size: 12px;
+  }
+
+  .btn-foul {
+    width: 24px;
+    height: 24px;
+    font-size: 13px;
+  }
 }

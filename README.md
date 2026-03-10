@@ -120,11 +120,9 @@ git push -u origin main
    - Folder 選擇 **/ (root)**
 5. 點 **Save**
 
-### 步驟四：等待部署完成
-1. 稍等 1-3 分鐘
-2. 重新整理 Settings → Pages 頁面
-3. 上方會出現綠色的網址：`https://你的帳號.github.io/Scoreboard/`
-4. 點擊該網址即可使用！
+### iPhone / iOS 專屬優化
+> [!IMPORTANT]
+> **iPhone 全螢幕**：由於 iOS Safari 不支援標準的網頁全螢幕按鈕，請點擊 Safari 下方的 **「分享」按鈕 (箭頭向上圖示)**，然後選擇 **「加入主畫面」**。從主畫面啟動時，應用程式會以全螢幕模式開啟，不會顯示網頁導覽列。
 
 ### 後續更新
 每次修改後只需要：

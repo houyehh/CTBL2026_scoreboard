@@ -41,6 +41,14 @@ async function loadTeams() {
   try {
     const resp = await fetch('teams.json');
     teamsData = await resp.json();
+    // Sort all rosters by player number (numeric)
+    for (const teamName in teamsData) {
+      teamsData[teamName].sort((a, b) => {
+        const numA = parseInt(a.number) || 0;
+        const numB = parseInt(b.number) || 0;
+        return numA - numB;
+      });
+    }
   } catch (e) {
     console.warn('Could not load teams.json:', e);
     teamsData = {};
@@ -165,10 +173,10 @@ function setupKeyboard() {
 function toggleFullscreen() {
   const el = document.documentElement;
   if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-    if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
+    if (el.requestFullscreen) el.requestFullscreen().catch(() => { });
     else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
   } else {
-    if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+    if (document.exitFullscreen) document.exitFullscreen().catch(() => { });
     else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
   }
 }
@@ -525,7 +533,6 @@ function renderPlayerList(side, teamName, containerId) {
       <div class="player-foul-controls">
         <button class="btn-foul" onclick="changePlayerFoul('${key}', -1, this)">−</button>
         <span class="player-foul-total">${total}</span>
-        <span class="player-foul-q">${qFouls}</span>
         <button class="btn-foul" onclick="changePlayerFoul('${key}', 1, this)">+</button>
       </div>
     `;
@@ -546,9 +553,7 @@ function changePlayerFoul(key, delta, btnEl) {
   // Update row display
   const row = btnEl.closest('.player-row');
   const totalEl = row.querySelector('.player-foul-total');
-  const qEl = row.querySelector('.player-foul-q');
   if (totalEl) totalEl.textContent = playerFouls[key];
-  if (qEl) qEl.textContent = playerFoulsByQuarter[quarterB][key];
   applyFoulWarning(row, playerFouls[key]);
 
   updateTeamFoulDisplays();
@@ -696,3 +701,29 @@ function registerServiceWorker() {
     });
   }
 }
+
+// ---- Orientation and Auto-Scaling ----
+function updateAutoScale() {
+  const pages = document.querySelectorAll('.page');
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+
+  pages.forEach(page => {
+    const isLandscape = vw > vh;
+    const baseWidth = isLandscape ? 1100 : 700;
+    const baseHeight = isLandscape ? 700 : 1000;
+
+    const scaleX = vw / baseWidth;
+    const scaleY = vh / baseHeight;
+    const scale = Math.min(scaleX, scaleY, 1.2);
+
+    page.style.setProperty('--app-scale', scale);
+  });
+}
+
+window.addEventListener('resize', updateAutoScale);
+window.addEventListener('load', updateAutoScale);
+window.addEventListener('orientationchange', () => {
+  setTimeout(updateAutoScale, 200);
+});
+updateAutoScale();
