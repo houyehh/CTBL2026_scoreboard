@@ -285,6 +285,29 @@ body {
   font-family: 'Noto Sans TC', sans-serif;
 }
 
+.home-instructions {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid #ffdd00;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #ccc;
+  width: 100%;
+  max-width: 400px;
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.home-instructions p {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #ffdd00;
+}
+
+.home-instructions ol {
+  margin-left: 20px;
+}
+
 .home-buttons-row {
   display: flex;
   gap: 20px;
