@@ -2,6 +2,10 @@
    Basketball Scoreboard — Global Styles (v2)
    ======================================================== */
 
+:root {
+  --app-scale: 1;
+}
+
 /* Reset */
 *,
 *::before,
@@ -375,7 +379,7 @@ body {
 }
 
 .timer-display {
-  font-size: 64px;
+  font-size: calc(64px * var(--app-scale));
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -386,12 +390,12 @@ body {
 }
 
 .timer-digit {
-  min-width: 72px;
+  min-width: calc(72px * var(--app-scale));
   text-align: center;
 }
 
 .timer-colon {
-  font-size: 64px;
+  font-size: calc(64px * var(--app-scale));
   color: inherit;
   margin: 0 2px;
 }
@@ -399,7 +403,8 @@ body {
 .score-side {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 5px;
   flex: 1;
 }
 
@@ -419,20 +424,20 @@ body {
 }
 
 .team-name-display {
-  font-size: 33px;
+  font-size: calc(33px * var(--app-scale));
   font-weight: 700;
-  padding: 9px 36px;
+  padding: calc(9px * var(--app-scale)) calc(36px * var(--app-scale));
   border: 2px dashed rgba(255, 255, 255, 0.4);
   border-radius: 8px;
   text-align: center;
-  min-width: 120px;
+  min-width: calc(120px * var(--app-scale));
 }
 
 .score-value {
-  font-size: 150px;
+  font-size: calc(150px * var(--app-scale));
   font-weight: bold;
   line-height: 1;
-  min-width: 240px;
+  min-width: calc(240px * var(--app-scale));
   text-align: center;
 }
 
@@ -499,7 +504,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   flex-shrink: 0;
 }
 
@@ -560,10 +565,10 @@ body {
 }
 
 .panel-team-header {
-  padding: 12px 18px;
+  padding: calc(12px * var(--app-scale)) calc(18px * var(--app-scale));
   background: #1a1a1a;
   color: #fff;
-  font-size: 24px;
+  font-size: calc(24px * var(--app-scale));
   font-weight: 700;
   text-align: center;
   border-bottom: 3px solid #ffdd00;
@@ -604,7 +609,7 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 21px;
+  font-size: calc(21px * var(--app-scale));
   min-width: 0;
   flex: 1;
 }
@@ -613,16 +618,16 @@ body {
   font-family: 'Orbitron', sans-serif;
   font-weight: 700;
   color: #ffdd00;
-  min-width: 42px;
+  min-width: calc(42px * var(--app-scale));
   text-align: right;
-  font-size: 20px;
+  font-size: calc(20px * var(--app-scale));
 }
 
 .player-name {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 16px;
+  font-size: calc(16px * var(--app-scale));
   font-weight: 500;
 }
 
@@ -655,18 +660,18 @@ body {
 
 .player-foul-total {
   font-family: 'Orbitron', sans-serif;
-  font-size: 28px;
+  font-size: calc(28px * var(--app-scale));
   font-weight: 700;
-  min-width: 36px;
+  min-width: calc(36px * var(--app-scale));
   text-align: center;
   color: #ffdd00;
 }
 
 .player-foul-q {
   font-family: 'Orbitron', sans-serif;
-  font-size: 12px;
+  font-size: calc(12px * var(--app-scale));
   font-weight: 700;
-  min-width: 16px;
+  min-width: calc(16px * var(--app-scale));
   text-align: center;
   color: #66ccff;
 }
@@ -681,6 +686,7 @@ body {
   gap: 8px;
   padding: 8px 10px;
   min-width: 0;
+  overflow-y: auto;
 }
 
 /* Controls bar above shot clock */
@@ -704,8 +710,8 @@ body {
 }
 
 #shot-clock-display {
-  font-size: 72px;
-  padding: 6px 21px;
+  font-size: calc(72px * var(--app-scale));
+  padding: calc(6px * var(--app-scale)) calc(21px * var(--app-scale));
 }
 
 /* Team fouls area */
@@ -730,7 +736,7 @@ body {
 
 .fouls-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 36px;
+  font-size: calc(36px * var(--app-scale));
   font-weight: 700;
   color: #fff;
 }
@@ -742,9 +748,9 @@ body {
 }
 
 .foul-value {
-  font-size: 90px;
+  font-size: calc(90px * var(--app-scale));
   font-weight: bold;
-  min-width: 90px;
+  min-width: calc(90px * var(--app-scale));
   text-align: center;
   border-radius: 8px;
   padding: 4px 8px;
@@ -756,7 +762,7 @@ body {
 }
 
 .foul-x {
-  font-size: 45px;
+  font-size: calc(45px * var(--app-scale));
   color: #fff;
 }
 
@@ -769,7 +775,7 @@ body {
 }
 
 .possession-label {
-  font-size: 24px;
+  font-size: calc(24px * var(--app-scale));
   color: #aaa;
   font-weight: 700;
 }

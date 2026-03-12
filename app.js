@@ -106,8 +106,6 @@ function enterRole() {
 function updateTeamNames() {
   document.getElementById('team-name-left-a').textContent = selectedTeamLeft;
   document.getElementById('team-name-right-a').textContent = selectedTeamRight;
-  document.getElementById('team-name-left-b').textContent = selectedTeamLeft;
-  document.getElementById('team-name-right-b').textContent = selectedTeamRight;
   document.getElementById('panel-header-left').textContent = selectedTeamLeft;
   document.getElementById('panel-header-right').textContent = selectedTeamRight;
 }
@@ -714,3 +712,51 @@ function registerServiceWorker() {
   }
 }
 
+// ---- Orientation and Auto-Scaling ----
+function updateLayout() {
+  const pages = document.querySelectorAll('.page');
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const isPortrait = vh > vw;
+  
+  const longEdge = Math.max(vw, vh);
+  const shortEdge = Math.min(vw, vh);
+
+  // Reserve ~12px padding on all sides (0.3cm = ~11-12px) = 24px total
+  const availableWidth = longEdge - 24;
+  const availableHeight = shortEdge - 24;
+
+  const baseWidth = 1100;
+  // Calculate scale based on available width against original base width 1100.
+  // We only scale down (so scale <= 1) to fit the display parts. Key buttons stay unscaled.
+  let scaleW = availableWidth / baseWidth;
+  let scaleH = availableHeight / 600; // rough baseline for height
+  
+  // We take the minimum scale needed to ensure we don't overflow either W or H.
+  let scale = Math.min(scaleW, scaleH);
+  if (scale > 1) scale = 1;
+
+  document.documentElement.style.setProperty('--app-scale', scale);
+
+  pages.forEach(page => {
+    // Force overrides in JS to ensure clean rotation and fill
+    if (isPortrait) {
+      page.style.width = `${vh}px`;
+      page.style.height = `${vw}px`;
+      page.style.transform = `translate(-50%, -50%) rotate(90deg)`;
+      page.style.top = `50%`;
+      page.style.left = `50%`;
+    } else {
+      page.style.width = `100vw`;
+      page.style.height = `100vh`;
+      page.style.transform = `none`;
+      page.style.top = `0`;
+      page.style.left = `0`;
+    }
+  });
+}
+
+window.addEventListener('resize', updateLayout);
+window.addEventListener('orientationchange', () => setTimeout(updateLayout, 200));
+window.addEventListener('load', updateLayout);
+updateLayout();
