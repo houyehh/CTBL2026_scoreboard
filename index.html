@@ -143,21 +143,18 @@
           </div>
         </div>
 
-        <!-- Team Fouls (auto-sum per quarter) -->
+        <!-- Team Fouls (auto-sum per quarter) & Possession -->
         <div class="team-fouls-area">
-          <h2 class="fouls-title">Fouls</h2>
+          <div class="fouls-title-row">
+            <button class="btn-possession" id="btn-poss-left" onclick="togglePossession('left')">◀</button>
+            <h2 class="fouls-title">Fouls</h2>
+            <button class="btn-possession" id="btn-poss-right" onclick="togglePossession('right')">▶</button>
+          </div>
           <div class="team-fouls-row">
             <div id="team-foul-left" class="foul-value foul-yellow">0</div>
             <span class="foul-x">✕</span>
             <div id="team-foul-right" class="foul-value foul-yellow">0</div>
           </div>
-        </div>
-
-        <!-- Possession Arrows -->
-        <div class="possession-row">
-          <button class="btn-possession" id="btn-poss-left" onclick="togglePossession('left')">◀</button>
-          <span class="possession-label">球權</span>
-          <button class="btn-possession" id="btn-poss-right" onclick="togglePossession('right')">▶</button>
         </div>
 
         <!-- Shot clock reset buttons + play, all in one row -->

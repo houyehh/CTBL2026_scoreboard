@@ -734,6 +734,12 @@ body {
   text-align: center;
 }
 
+.fouls-title-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
 .fouls-title {
   font-family: 'Orbitron', sans-serif;
   font-size: calc(36px * var(--app-scale));
@@ -767,26 +773,13 @@ body {
 }
 
 /* Possession arrows */
-.possession-row {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  margin-top: 4px;
-}
-
-.possession-label {
-  font-size: calc(24px * var(--app-scale));
-  color: #aaa;
-  font-weight: 700;
-}
-
 .btn-possession {
-  width: 88px;
-  height: 72px;
+  width: calc(64px * var(--app-scale));
+  height: calc(45px * var(--app-scale));
   background: rgba(255, 50, 50, 0.15);
   border: 2px solid transparent;
   color: #666;
-  font-size: 40px;
+  font-size: calc(28px * var(--app-scale));
   cursor: pointer;
   border-radius: 6px;
   display: flex;
@@ -809,7 +802,9 @@ body {
 .shot-clock-controls {
   display: flex;
   align-items: center;
-  gap: 21px;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 4px;
   margin-top: 8px;
 }
 
