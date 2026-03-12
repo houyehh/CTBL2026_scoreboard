@@ -193,7 +193,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 36px;
+  gap: 24px;
 }
 
 .team-select-row {
@@ -236,6 +236,7 @@ body {
   display: flex;
   align-items: center;
   gap: 48px;
+  margin-top: -10px; /* Moves Your Task block up slightly */
 }
 
 .role-label {
@@ -286,26 +287,12 @@ body {
 }
 
 .home-instructions {
-  background: rgba(255, 255, 255, 0.05);
-  border-left: 4px solid #ffdd00;
-  padding: 10px 16px;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #ccc;
-  width: 100%;
-  max-width: 400px;
-  margin: 10px 0;
-  line-height: 1.5;
-}
-
-.home-instructions p {
-  margin-bottom: 6px;
-  font-weight: bold;
-  color: #ffdd00;
-}
-
-.home-instructions ol {
-  margin-left: 20px;
+  font-size: 13px;
+  color: #777;
+  text-align: center;
+  margin-top: -30px; /* Pulls it up closer to Your Task */
+  margin-bottom: -10px; /* Prevents pushing bottom buttons down */
+  line-height: 1.6;
 }
 
 .home-buttons-row {
