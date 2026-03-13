@@ -343,7 +343,7 @@ body {
   flex-direction: column;
   background: #0a0a0a;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Start from top to control vertical spacing better */
   padding: 0;
 }
 
@@ -360,18 +360,18 @@ body {
 }
 
 .btn-play-large {
-  width: 128px;
-  height: 128px;
+  width: calc(140px * var(--app-scale));
+  height: calc(140px * var(--app-scale));
   border-radius: 50%;
-  border: 2px solid #fff;
+  border: calc(3px * var(--app-scale)) solid #fff;
   background: transparent;
   color: #fff;
-  font-size: 52px;
+  font-size: calc(60px * var(--app-scale));
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  margin-bottom: calc(10px * var(--app-scale));
 }
 
 .btn-play-large:hover {
@@ -380,12 +380,14 @@ body {
 
 .scoreboard {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 0 20px;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: calc(20px * var(--app-scale));
+  padding: 0 calc(30px * var(--app-scale));
   width: 100%;
   flex: 1;
+  box-sizing: border-box;
+  overflow: hidden; /* Ensure it stays in bounds */
 }
 
 .timer-display {
@@ -412,25 +414,28 @@ body {
 
 .score-side {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
+  align-items: stretch;
+  gap: calc(15px * var(--app-scale));
   flex: 1;
 }
 
+/* Ensure Plus buttons are on the outside, Inner info next to center */
 .score-left {
-  justify-content: flex-end;
+  flex-direction: row;
 }
 
 .score-right {
-  justify-content: flex-start;
+  flex-direction: row-reverse;
 }
 
 .score-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  justify-content: flex-end; /* Align bottom area primarily */
+  padding-bottom: calc(40px * var(--app-scale)); /* Space from bottom edge */
+  gap: calc(10px * var(--app-scale));
+  flex: 1;
 }
 
 .team-name-display {
@@ -454,21 +459,27 @@ body {
 .score-buttons-col {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  height: 100%;
+  justify-content: space-between;
+  align-self: stretch; /* Stretch to fill full scoreboard height */
 }
 
 .btn-score-plus {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 2px solid #ccc;
+  flex: 1;
+  width: calc(110px * var(--app-scale));
+  border-radius: calc(12px * var(--app-scale));
+  border: calc(5px * var(--app-scale)) solid rgba(220, 220, 220, 0.8); /* Grey-white border */
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
-  font-size: 27px;
-  font-weight: 700;
+  font-size: calc(48px * var(--app-scale));
+  font-weight: 900;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.1s;
   font-family: 'Orbitron', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-score-plus:hover {
@@ -487,16 +498,16 @@ body {
 }
 
 .btn-score-minus {
-  width: 60px;
-  height: 60px;
+  width: calc(64px * var(--app-scale));
+  height: calc(64px * var(--app-scale));
   border-radius: 50%;
-  border: 2px solid #ff4444;
+  border: calc(2px * var(--app-scale)) solid #ff4444;
   background: rgba(255, 68, 68, 0.15);
   color: #ff6666;
-  font-size: 21px;
+  font-size: calc(24px * var(--app-scale));
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.1s;
   font-family: 'Orbitron', sans-serif;
 }
 
@@ -513,9 +524,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-between; /* Distribute vertically */
+  padding-bottom: calc(20px * var(--app-scale));
   flex-shrink: 0;
+  width: calc(300px * var(--app-scale));
 }
 
 .btn-swap {
@@ -1015,40 +1027,8 @@ body {
 
 /* Responsive */
 @media (max-width: 900px) {
-  .score-value {
-    font-size: 64px;
-    min-width: 100px;
-  }
-
-  .timer-display {
-    font-size: 30px;
-  }
-
-  .timer-digit {
-    min-width: 36px;
-  }
-
-  .timer-colon {
-    font-size: 30px;
-  }
-
-  .team-name-display {
-    font-size: 16px;
-    padding: 4px 12px;
-  }
-
-  .btn-score-plus {
-    width: 38px;
-    height: 38px;
-    font-size: 14px;
-  }
-
-  .btn-score-minus {
-    width: 32px;
-    height: 32px;
-    font-size: 12px;
-  }
-
+  /* Let scaling logic handle scoreboard sizes */
+  
   .player-panel {
     width: 180px;
     min-width: 150px;
@@ -1068,10 +1048,7 @@ body {
 }
 
 @media (max-width: 600px) {
-  .score-value {
-    font-size: 44px;
-    min-width: 70px;
-  }
+  /* Scoreboard sizes handled by scaling */
 
   .vs-x-large {
     font-size: 28px;
