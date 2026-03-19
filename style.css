@@ -611,20 +611,23 @@ body {
   align-items: center;
   justify-content: center;
   gap: calc(28px * var(--app-scale));
-  width: 118%;
-  overflow: visible;
+  width: 100%;
 }
 
 .a-prime-main-timer {
-  min-width: calc(250px * var(--app-scale));
+  min-width: calc(270px * var(--app-scale));
   justify-content: center;
-  overflow: visible;
+  padding-left: calc(14px * var(--app-scale));
+  padding-right: calc(14px * var(--app-scale));
+  overflow: hidden;
 }
 
 .a-prime-shot-display {
-  min-width: calc(150px * var(--app-scale));
+  min-width: calc(165px * var(--app-scale));
   justify-content: center;
-  overflow: visible;
+  padding-left: calc(12px * var(--app-scale));
+  padding-right: calc(12px * var(--app-scale));
+  overflow: hidden;
 }
 
 .a-prime-control-row {
