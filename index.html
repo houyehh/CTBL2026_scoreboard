@@ -170,16 +170,16 @@
           </div>
         </div>
 
-        <div class="a-prime-control-row">
-          <button id="btn-timer-a-prime-toggle" class="btn-play-large btn-play-accent btn-play-red" onclick="toggleMainTimer()">▶</button>
-          <div class="a-prime-reset-group">
-            <button class="btn-shot-reset btn-shot-reset-prime" onclick="resetShotClock(14)">14</button>
-            <button class="btn-shot-reset btn-shot-reset-prime" onclick="resetShotClock(24)">24</button>
-          </div>
-          <button id="btn-shot-a-prime-toggle" class="btn-play-large btn-play-accent btn-play-yellow" onclick="toggleShotClock()">▶</button>
+        <div class="a-prime-reset-group">
+          <button class="btn-shot-reset btn-shot-reset-prime" onclick="resetShotClock(14)">14</button>
+          <button class="btn-shot-reset btn-shot-reset-prime" onclick="resetShotClock(24)">24</button>
         </div>
 
-        <button class="btn-swap" onclick="swapScores()" title="交換左右">⇄</button>
+        <div class="a-prime-control-row">
+          <button id="btn-timer-a-prime-toggle" class="btn-play-large btn-play-accent btn-play-red" onclick="toggleMainTimer()">▶</button>
+          <button class="btn-swap btn-swap-prime" onclick="swapScores()" title="交換左右">⇄</button>
+          <button id="btn-shot-a-prime-toggle" class="btn-play-large btn-play-accent btn-play-yellow" onclick="toggleShotClock()">▶</button>
+        </div>
       </div>
 
       <div class="score-side score-right">
@@ -261,7 +261,7 @@
 
   <!-- ==================== PAGE B' — Fouls ==================== -->
   <div id="page-b-prime" class="page">
-    <div class="page-b-layout">
+    <div class="page-b-layout page-b-layout-prime">
       <div class="player-panel player-panel-left">
         <div class="panel-team-header" id="panel-header-left-b-prime">隊伍A</div>
         <div class="player-list" id="player-list-left-b-prime"></div>
