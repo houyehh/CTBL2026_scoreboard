@@ -600,7 +600,7 @@ body {
 }
 
 .score-center-col-prime {
-  width: calc(300px * var(--app-scale));
+  width: calc(320px * var(--app-scale));
   justify-content: flex-start;
   gap: calc(18px * var(--app-scale));
   padding-bottom: calc(10px * var(--app-scale));
@@ -609,14 +609,14 @@ body {
 .a-prime-timer-row {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  gap: calc(14px * var(--app-scale));
+  justify-content: flex-start;
+  gap: calc(16px * var(--app-scale));
   width: 100%;
 }
 
 .a-prime-main-timer {
   flex: 0 1 auto;
-  min-width: calc(260px * var(--app-scale));
+  min-width: calc(300px * var(--app-scale));
   justify-content: center;
   padding-left: calc(14px * var(--app-scale));
   padding-right: calc(14px * var(--app-scale));
@@ -625,7 +625,7 @@ body {
 
 .a-prime-shot-display {
   flex: 0 1 auto;
-  min-width: calc(150px * var(--app-scale));
+  min-width: calc(180px * var(--app-scale));
   justify-content: center;
   padding-left: calc(12px * var(--app-scale));
   padding-right: calc(12px * var(--app-scale));
