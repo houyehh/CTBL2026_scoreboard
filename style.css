@@ -455,8 +455,8 @@ body {
 }
 
 #page-a-prime .scoreboard {
-  gap: calc(10px * var(--app-scale));
-  padding: 0 calc(18px * var(--app-scale));
+  gap: calc(20px * var(--app-scale));
+  padding: 0 calc(30px * var(--app-scale));
 }
 
 .timer-display {
@@ -615,7 +615,7 @@ body {
 }
 
 .a-prime-main-timer {
-  min-width: calc(270px * var(--app-scale));
+  min-width: calc(320px * var(--app-scale));
   justify-content: center;
   padding-left: calc(14px * var(--app-scale));
   padding-right: calc(14px * var(--app-scale));
@@ -623,11 +623,12 @@ body {
 }
 
 .a-prime-shot-display {
-  min-width: calc(165px * var(--app-scale));
+  min-width: calc(180px * var(--app-scale));
   justify-content: center;
   padding-left: calc(12px * var(--app-scale));
   padding-right: calc(12px * var(--app-scale));
   overflow: hidden;
+  margin-left: calc(18px * var(--app-scale));
 }
 
 .a-prime-control-row {
