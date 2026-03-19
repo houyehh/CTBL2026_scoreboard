@@ -609,18 +609,26 @@ body {
 .a-prime-timer-row {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: calc(16px * var(--app-scale));
   width: 100%;
 }
 
 .a-prime-main-timer {
-  flex: 1 1 0;
-  min-width: calc(260px * var(--app-scale));
+  flex: 0 1 auto;
+  min-width: calc(380px * var(--app-scale));
   justify-content: center;
-  padding-left: calc(14px * var(--app-scale));
-  padding-right: calc(14px * var(--app-scale));
+  padding-left: calc(18px * var(--app-scale));
+  padding-right: calc(18px * var(--app-scale));
   overflow: hidden;
+}
+
+.a-prime-main-timer .timer-digit {
+  min-width: calc(96px * var(--app-scale));
+}
+
+.a-prime-main-timer .timer-colon {
+  margin: 0 calc(8px * var(--app-scale));
 }
 
 .a-prime-shot-display {
@@ -630,10 +638,6 @@ body {
   padding-left: calc(12px * var(--app-scale));
   padding-right: calc(12px * var(--app-scale));
   overflow: hidden;
-}
-
-.a-prime-main-timer .timer-digit {
-  min-width: calc(60px * var(--app-scale));
 }
 
 .a-prime-control-row {
