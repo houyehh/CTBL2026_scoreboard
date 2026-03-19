@@ -54,7 +54,7 @@ function renderQuarterDisplays() {
   setTexts(['quarter-b-num', 'quarter-b-prime-num'], quarterB);
 }
 
-function getRolePageId(role) {
+function getPageForRole(role) {
   return ROLE_PAGE_MAP[role] || 'page-home';
 }
 
@@ -124,11 +124,11 @@ function enterRole() {
     return;
   }
   updateTeamNames();
-  const pageId = getRolePageId(selectedRole);
-  if (pageId === 'page-b' || pageId === 'page-b-prime') {
+  const nextPage = getPageForRole(selectedRole);
+  if (nextPage === 'page-b' || nextPage === 'page-b-prime') {
     buildPlayerLists();
   }
-  showPage(pageId);
+  showPage(nextPage);
   saveState();
 }
 
@@ -292,7 +292,6 @@ function swapScores() {
   document.getElementById('select-team-left').value = selectedTeamLeft;
   document.getElementById('select-team-right').value = selectedTeamRight;
   updateTeamNames();
-  updateTeamFoulDisplays();
   buildPlayerLists();
 
   saveState();
@@ -381,10 +380,14 @@ function togglePossession(side) {
 }
 
 function updatePossessionUI() {
-  const btnL = document.getElementById('btn-poss-left');
-  const btnR = document.getElementById('btn-poss-right');
-  if (btnL) btnL.classList.toggle('active', possession === 'left');
-  if (btnR) btnR.classList.toggle('active', possession === 'right');
+  ['btn-poss-left', 'btn-poss-left-b-prime'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.classList.toggle('active', possession === 'left');
+  });
+  ['btn-poss-right', 'btn-poss-right-b-prime'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.classList.toggle('active', possession === 'right');
+  });
 }
 
 // ============================================================
@@ -613,7 +616,6 @@ function updateTeamFoulDisplays() {
     el.textContent = leftTotal;
     el.classList.toggle('foul-red-bg', leftTotal >= 5);
   });
-
   ['team-foul-right', 'team-foul-right-b-prime'].forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;

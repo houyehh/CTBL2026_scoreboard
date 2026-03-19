@@ -38,23 +38,27 @@
 
       <div class="role-select-row">
         <span class="role-label">Your Task:</span>
-        <div class="role-buttons role-grid">
-          <button id="btn-role-a" class="btn-role" data-role="A" onclick="selectRole('A')">
-            <span class="role-letter">A</span>
-            <span class="role-desc">分數大錶</span>
-          </button>
-          <button id="btn-role-a-prime" class="btn-role" data-role="A_PRIME" onclick="selectRole('A_PRIME')">
-            <span class="role-letter">A'</span>
-            <span class="role-desc">大錶 + 小錶</span>
-          </button>
-          <button id="btn-role-b" class="btn-role" data-role="B" onclick="selectRole('B')">
-            <span class="role-letter">B</span>
-            <span class="role-desc">犯規小錶</span>
-          </button>
-          <button id="btn-role-b-prime" class="btn-role" data-role="B_PRIME" onclick="selectRole('B_PRIME')">
-            <span class="role-letter">B'</span>
-            <span class="role-desc">犯規紀錄</span>
-          </button>
+        <div class="role-buttons role-buttons-split">
+          <div class="role-stack">
+            <button id="btn-role-a" class="btn-role btn-role-split" data-role="A" onclick="selectRole('A')">
+              <span class="role-letter">A</span>
+              <span class="role-desc">分數大錶</span>
+            </button>
+            <button id="btn-role-a-prime" class="btn-role btn-role-split" data-role="A_PRIME" onclick="selectRole('A_PRIME')">
+              <span class="role-letter">A'</span>
+              <span class="role-desc">分數大錶 + 24秒</span>
+            </button>
+          </div>
+          <div class="role-stack">
+            <button id="btn-role-b" class="btn-role btn-role-split" data-role="B" onclick="selectRole('B')">
+              <span class="role-letter">B</span>
+              <span class="role-desc">犯規小錶</span>
+            </button>
+            <button id="btn-role-b-prime" class="btn-role btn-role-split" data-role="B_PRIME" onclick="selectRole('B_PRIME')">
+              <span class="role-letter">B'</span>
+              <span class="role-desc">Fouls</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -126,7 +130,7 @@
     </div>
   </div>
 
-  <!-- ==================== PAGE A' — Combined Main + Shot Clock ==================== -->
+  <!-- ==================== PAGE A' — Score & Combined Timers ==================== -->
   <div id="page-a-prime" class="page">
     <div class="scoreboard">
       <div class="score-side score-left">
@@ -155,22 +159,22 @@
           </div>
         </div>
 
-        <div class="a-prime-timers">
-          <div id="timer-a-prime-display" class="timer-display timer-red timer-display-main" onclick="editMainTimer()">
+        <div class="a-prime-timer-row">
+          <div id="timer-a-prime-display" class="timer-display timer-red a-prime-main-timer" onclick="editMainTimer()">
             <span id="timer-a-prime-min" class="timer-digit">10</span>
             <span class="timer-colon">:</span>
             <span id="timer-a-prime-sec" class="timer-digit">00</span>
           </div>
-          <div id="shot-clock-a-prime-display" class="timer-display timer-yellow timer-display-shot" onclick="editShotClock()">
+          <div id="shot-clock-a-prime-display" class="timer-display timer-yellow a-prime-shot-display" onclick="editShotClock()">
             <span id="shot-clock-a-prime-val">24.0</span>
           </div>
         </div>
 
-        <div class="a-prime-controls">
+        <div class="a-prime-control-row">
           <button id="btn-timer-a-prime-toggle" class="btn-play-large btn-play-accent btn-play-red" onclick="toggleMainTimer()">▶</button>
-          <div class="a-prime-shot-buttons">
-            <button class="btn-shot-reset btn-shot-reset-compact" onclick="resetShotClock(14)">14</button>
-            <button class="btn-shot-reset btn-shot-reset-compact" onclick="resetShotClock(24)">24</button>
+          <div class="a-prime-reset-group">
+            <button class="btn-shot-reset btn-shot-reset-prime" onclick="resetShotClock(14)">14</button>
+            <button class="btn-shot-reset btn-shot-reset-prime" onclick="resetShotClock(24)">24</button>
           </div>
           <button id="btn-shot-a-prime-toggle" class="btn-play-large btn-play-accent btn-play-yellow" onclick="toggleShotClock()">▶</button>
         </div>
@@ -255,7 +259,7 @@
     </div>
   </div>
 
-  <!-- ==================== PAGE B' — Fouls Only ==================== -->
+  <!-- ==================== PAGE B' — Fouls ==================== -->
   <div id="page-b-prime" class="page">
     <div class="page-b-layout">
       <div class="player-panel player-panel-left">
@@ -278,12 +282,14 @@
         </div>
 
         <div class="team-fouls-area team-fouls-area-prime">
-          <div class="fouls-title-row fouls-title-row-prime">
+          <div class="fouls-title-row">
+            <button class="btn-possession" id="btn-poss-left-b-prime" onclick="togglePossession('left')">◀</button>
             <h2 class="fouls-title">Fouls</h2>
+            <button class="btn-possession" id="btn-poss-right-b-prime" onclick="togglePossession('right')">▶</button>
           </div>
           <div class="team-fouls-row">
             <div id="team-foul-left-b-prime" class="foul-value foul-yellow">0</div>
-            <span class="foul-x">:</span>
+            <span class="foul-x">×</span>
             <div id="team-foul-right-b-prime" class="foul-value foul-yellow">0</div>
           </div>
         </div>

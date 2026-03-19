@@ -250,10 +250,16 @@ body {
   gap: 32px;
 }
 
-.role-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(180px, 1fr));
-  gap: 18px;
+.role-buttons-split {
+  gap: 24px;
+}
+
+.role-stack {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  height: 150px;
+  gap: 8px;
 }
 
 .btn-role {
@@ -266,25 +272,38 @@ body {
   cursor: pointer;
   color: #aaa;
   transition: all 0.2s;
-  padding: 18px 20px;
+  padding: 12px 20px;
   border-radius: 12px;
+}
+
+.btn-role-split {
+  flex: 1;
+  justify-content: center;
+  min-height: 0;
+  gap: 2px;
+  padding: 8px 16px;
   border: 2px solid rgba(255, 255, 255, 0.16);
   background: rgba(255, 255, 255, 0.03);
-  min-width: 180px;
-  min-height: 130px;
+}
+
+.btn-role-split .role-letter {
+  font-size: 46px;
+  line-height: 1;
+}
+
+.btn-role-split .role-desc {
+  font-size: 14px;
 }
 
 .btn-role:hover {
   color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .btn-role.selected {
   color: #fff;
   background: rgba(255, 255, 255, 0.12);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.55);
 }
 
 .role-letter {
@@ -398,7 +417,7 @@ body {
 .btn-play-red {
   color: #ff4d4d;
   border-color: #ff4d4d;
-  box-shadow: 0 0 16px rgba(255, 77, 77, 0.18);
+  box-shadow: 0 0 18px rgba(255, 77, 77, 0.18);
 }
 
 .btn-play-red:hover {
@@ -408,7 +427,7 @@ body {
 .btn-play-yellow {
   color: #ffdd00;
   border-color: #ffdd00;
-  box-shadow: 0 0 16px rgba(255, 221, 0, 0.18);
+  box-shadow: 0 0 18px rgba(255, 221, 0, 0.18);
 }
 
 .btn-play-yellow:hover {
@@ -568,31 +587,31 @@ body {
 }
 
 .score-center-col-prime {
-  width: calc(470px * var(--app-scale));
-  padding-bottom: calc(10px * var(--app-scale));
+  width: calc(460px * var(--app-scale));
   justify-content: flex-start;
-  gap: calc(26px * var(--app-scale));
+  gap: calc(22px * var(--app-scale));
+  padding-bottom: calc(10px * var(--app-scale));
 }
 
-.a-prime-timers {
+.a-prime-timer-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  gap: calc(18px * var(--app-scale));
+  gap: calc(20px * var(--app-scale));
   width: 100%;
 }
 
-.timer-display-main {
-  min-width: calc(220px * var(--app-scale));
+.a-prime-main-timer {
+  min-width: calc(240px * var(--app-scale));
   justify-content: center;
 }
 
-.timer-display-shot {
-  min-width: calc(132px * var(--app-scale));
+.a-prime-shot-display {
+  min-width: calc(150px * var(--app-scale));
   justify-content: center;
 }
 
-.a-prime-controls {
+.a-prime-control-row {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -600,15 +619,17 @@ body {
   width: 100%;
 }
 
-.a-prime-shot-buttons {
+.a-prime-reset-group {
   display: flex;
   align-items: center;
   gap: calc(14px * var(--app-scale));
 }
 
-.btn-shot-reset-compact {
-  width: calc(112px * var(--app-scale));
-  height: calc(112px * var(--app-scale));
+.btn-shot-reset-prime {
+  width: calc(86px * var(--app-scale));
+  height: calc(150px * var(--app-scale));
+  border-radius: calc(50px * var(--app-scale));
+  font-size: calc(42px * var(--app-scale));
 }
 
 .btn-swap {
@@ -794,8 +815,8 @@ body {
 }
 
 .page-b-center-prime {
-  justify-content: flex-start;
   gap: 18px;
+  justify-content: flex-start;
 }
 
 /* Controls bar above shot clock */
@@ -823,7 +844,6 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding-top: 8px;
 }
 
 #shot-clock-display {
@@ -837,6 +857,10 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 6px;
+}
+
+.team-fouls-area-prime {
+  margin-top: calc(10px * var(--app-scale));
 }
 
 .team-labels-row {
@@ -855,10 +879,6 @@ body {
   display: flex;
   align-items: center;
   gap: 24px;
-}
-
-.fouls-title-row-prime {
-  justify-content: center;
 }
 
 .fouls-title {
@@ -946,10 +966,6 @@ body {
 .btn-shot-reset:hover {
   background: rgba(50, 204, 100, 0.25);
   transform: scale(1.08);
-}
-
-.team-fouls-area-prime {
-  margin-top: calc(8px * var(--app-scale));
 }
 
 /* ============================
@@ -1132,8 +1148,9 @@ body {
 @media (max-width: 900px) {
   /* Let scaling logic handle scoreboard sizes */
 
-  .role-grid {
-    grid-template-columns: repeat(2, minmax(150px, 1fr));
+  .role-stack {
+    width: 180px;
+    height: 132px;
   }
   
   .player-panel {
@@ -1161,9 +1178,14 @@ body {
     font-size: 28px;
   }
 
-  .role-grid {
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  .role-buttons-split {
     gap: 12px;
+  }
+
+  .role-stack {
+    width: 130px;
+    height: 112px;
+    gap: 6px;
   }
 
   .role-letter {
