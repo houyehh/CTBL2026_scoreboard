@@ -28,6 +28,36 @@ let possession = null; // 'left' or 'right'
 // Timer edit mode
 let timerEditTarget = null; // 'main' or 'shot'
 
+const ROLE_PAGE_MAP = {
+  A: 'page-a',
+  A_PRIME: 'page-a-prime',
+  B: 'page-b',
+  B_PRIME: 'page-b-prime'
+};
+
+function setTextIfExists(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+
+function setTexts(ids, value) {
+  ids.forEach(id => setTextIfExists(id, value));
+}
+
+function renderScoreDisplays() {
+  setTexts(['score-left', 'score-left-a-prime'], scoreLeft);
+  setTexts(['score-right', 'score-right-a-prime'], scoreRight);
+}
+
+function renderQuarterDisplays() {
+  setTexts(['quarter-a-num', 'quarter-a-prime-num'], quarterA);
+  setTexts(['quarter-b-num', 'quarter-b-prime-num'], quarterB);
+}
+
+function getRolePageId(role) {
+  return ROLE_PAGE_MAP[role] || 'page-home';
+}
+
 // ---- Initialization ----
 document.addEventListener('DOMContentLoaded', async () => {
   await loadTeams();
@@ -86,7 +116,7 @@ function selectRole(role) {
 
 function enterRole() {
   if (!selectedRole) {
-    alert('請先選擇角色 (A 或 B)！');
+    alert('請先選擇角色！');
     return;
   }
   if (!selectedTeamLeft || !selectedTeamRight) {
@@ -94,20 +124,19 @@ function enterRole() {
     return;
   }
   updateTeamNames();
-  if (selectedRole === 'A') {
-    showPage('page-a');
-  } else {
+  const pageId = getRolePageId(selectedRole);
+  if (pageId === 'page-b' || pageId === 'page-b-prime') {
     buildPlayerLists();
-    showPage('page-b');
   }
+  showPage(pageId);
   saveState();
 }
 
 function updateTeamNames() {
-  document.getElementById('team-name-left-a').textContent = selectedTeamLeft;
-  document.getElementById('team-name-right-a').textContent = selectedTeamRight;
-  document.getElementById('panel-header-left').textContent = selectedTeamLeft;
-  document.getElementById('panel-header-right').textContent = selectedTeamRight;
+  setTexts(['team-name-left-a', 'team-name-left-a-prime'], selectedTeamLeft);
+  setTexts(['team-name-right-a', 'team-name-right-a-prime'], selectedTeamRight);
+  setTexts(['panel-header-left', 'panel-header-left-b-prime'], selectedTeamLeft);
+  setTexts(['panel-header-right', 'panel-header-right-b-prime'], selectedTeamRight);
 }
 
 // ---- New Game ----
@@ -126,14 +155,13 @@ function newGame() {
   pauseShotClock();
 
   // Update displays
-  document.getElementById('score-left').textContent = 0;
-  document.getElementById('score-right').textContent = 0;
+  renderScoreDisplays();
   renderMainTimer();
   renderShotClock();
-  document.getElementById('quarter-a-num').textContent = 1;
-  document.getElementById('quarter-b-num').textContent = 1;
+  renderQuarterDisplays();
   updateTeamFoulDisplays();
   updatePossessionUI();
+  if (selectedTeamLeft && selectedTeamRight) buildPlayerLists();
   saveState();
 }
 
@@ -183,7 +211,7 @@ function toggleMainTimer() {
 function startMainTimer() {
   if (mainTimerMs <= 0) return;
   mainTimerRunning = true;
-  document.getElementById('btn-timer-a-toggle').textContent = '⏸';
+  setTexts(['btn-timer-a-toggle', 'btn-timer-a-prime-toggle'], '⏸');
   const tick = mainTimerMs <= 60000 ? 100 : 1000; // 0.1s precision in last minute
   mainTimerInterval = setInterval(() => {
     mainTimerMs -= tick;
@@ -209,8 +237,7 @@ function pauseMainTimer() {
   mainTimerRunning = false;
   clearInterval(mainTimerInterval);
   mainTimerInterval = null;
-  const btn = document.getElementById('btn-timer-a-toggle');
-  if (btn) btn.textContent = '▶';
+  setTexts(['btn-timer-a-toggle', 'btn-timer-a-prime-toggle'], '▶');
 }
 
 function renderMainTimer() {
@@ -220,11 +247,11 @@ function renderMainTimer() {
 
   if (mainTimerMs <= 60000 && mainTimerMs > 0) {
     // Last minute: show MM:SS.T format
-    document.getElementById('timer-a-min').textContent = String(min).padStart(2, '0');
-    document.getElementById('timer-a-sec').textContent = sec.toFixed(1).padStart(4, '0');
+    setTexts(['timer-a-min', 'timer-a-prime-min'], String(min).padStart(2, '0'));
+    setTexts(['timer-a-sec', 'timer-a-prime-sec'], sec.toFixed(1).padStart(4, '0'));
   } else {
-    document.getElementById('timer-a-min').textContent = String(min).padStart(2, '0');
-    document.getElementById('timer-a-sec').textContent = String(Math.floor(sec)).padStart(2, '0');
+    setTexts(['timer-a-min', 'timer-a-prime-min'], String(min).padStart(2, '0'));
+    setTexts(['timer-a-sec', 'timer-a-prime-sec'], String(Math.floor(sec)).padStart(2, '0'));
   }
 }
 
@@ -244,11 +271,10 @@ function editMainTimer() {
 function addScore(side, amount) {
   if (side === 'left') {
     scoreLeft = Math.max(0, scoreLeft + amount);
-    document.getElementById('score-left').textContent = scoreLeft;
   } else {
     scoreRight = Math.max(0, scoreRight + amount);
-    document.getElementById('score-right').textContent = scoreRight;
   }
+  renderScoreDisplays();
   saveState();
 }
 
@@ -257,32 +283,29 @@ function swapScores() {
   const temp = scoreLeft;
   scoreLeft = scoreRight;
   scoreRight = temp;
-  document.getElementById('score-left').textContent = scoreLeft;
-  document.getElementById('score-right').textContent = scoreRight;
-
-  // Swap team names on Page A
-  const nameLeftEl = document.getElementById('team-name-left-a');
-  const nameRightEl = document.getElementById('team-name-right-a');
-  const tempName = nameLeftEl.textContent;
-  nameLeftEl.textContent = nameRightEl.textContent;
-  nameRightEl.textContent = tempName;
+  renderScoreDisplays();
 
   // Swap the internal selected teams
   const tempTeam = selectedTeamLeft;
   selectedTeamLeft = selectedTeamRight;
   selectedTeamRight = tempTeam;
+  document.getElementById('select-team-left').value = selectedTeamLeft;
+  document.getElementById('select-team-right').value = selectedTeamRight;
+  updateTeamNames();
+  updateTeamFoulDisplays();
+  buildPlayerLists();
 
   saveState();
 }
 
 // ---- Quarter ----
 function cycleQuarter(page) {
-  if (page === 'a') {
+  if (page === 'a' || page === 'a-prime') {
     quarterA = (quarterA % 4) + 1;
-    document.getElementById('quarter-a-num').textContent = quarterA;
+    renderQuarterDisplays();
   } else {
     quarterB = (quarterB % 4) + 1;
-    document.getElementById('quarter-b-num').textContent = quarterB;
+    renderQuarterDisplays();
     // Clear this quarter's per-quarter foul counts (new quarter starts fresh team foul count)
     playerFoulsByQuarter[quarterB] = {};
     // Rebuild lists to show updated per-quarter counts
@@ -306,7 +329,7 @@ function toggleShotClock() {
 function startShotClock() {
   if (shotClockMs <= 0) return;
   shotClockRunning = true;
-  document.getElementById('btn-shot-toggle').textContent = '⏸';
+  setTexts(['btn-shot-toggle', 'btn-shot-a-prime-toggle'], '⏸');
   shotClockInterval = setInterval(() => {
     shotClockMs -= 100;
     if (shotClockMs <= 0) {
@@ -322,13 +345,12 @@ function pauseShotClock() {
   shotClockRunning = false;
   clearInterval(shotClockInterval);
   shotClockInterval = null;
-  const btn = document.getElementById('btn-shot-toggle');
-  if (btn) btn.textContent = '▶';
+  setTexts(['btn-shot-toggle', 'btn-shot-a-prime-toggle'], '▶');
 }
 
 function renderShotClock() {
   const totalSec = shotClockMs / 1000;
-  document.getElementById('shot-clock-val').textContent = totalSec.toFixed(1);
+  setTexts(['shot-clock-val', 'shot-clock-a-prime-val'], totalSec.toFixed(1));
 }
 
 function resetShotClock(seconds) {
@@ -511,11 +533,14 @@ function onModalOverlayClick(e) {
 function buildPlayerLists() {
   renderPlayerList('left', selectedTeamLeft, 'player-list-left');
   renderPlayerList('right', selectedTeamRight, 'player-list-right');
+  renderPlayerList('left', selectedTeamLeft, 'player-list-left-b-prime');
+  renderPlayerList('right', selectedTeamRight, 'player-list-right-b-prime');
   updateTeamFoulDisplays();
 }
 
 function renderPlayerList(side, teamName, containerId) {
   const container = document.getElementById(containerId);
+  if (!container) return;
   container.innerHTML = '';
   const players = teamsData[teamName] || [];
   if (!playerFoulsByQuarter[quarterB]) playerFoulsByQuarter[quarterB] = {};
@@ -528,11 +553,8 @@ function renderPlayerList(side, teamName, containerId) {
     playerFoulsByQuarter[quarterB][key] = parseInt(playerFoulsByQuarter[quarterB][key]) || 0; // sanitize
 
     const total = playerFouls[key];
-    const qFouls = playerFoulsByQuarter[quarterB][key];
-
     const row = document.createElement('div');
     row.className = 'player-row';
-    row.id = 'row-' + CSS.escape(key);
     applyFoulWarning(row, total);
 
     row.innerHTML = `
@@ -560,12 +582,7 @@ function changePlayerFoul(key, delta, btnEl) {
   playerFouls[key] = newTotal;
   playerFoulsByQuarter[quarterB][key] = Math.max(0, playerFoulsByQuarter[quarterB][key] + actualDelta);
 
-  // Update row display
-  const row = btnEl.closest('.player-row');
-  const totalEl = row.querySelector('.player-foul-total');
-  if (totalEl) totalEl.textContent = playerFouls[key];
-  applyFoulWarning(row, playerFouls[key]);
-
+  buildPlayerLists();
   updateTeamFoulDisplays();
   saveState();
 }
@@ -590,16 +607,19 @@ function updateTeamFoulDisplays() {
     rightTotal += (qData[selectedTeamRight + '-' + p.number] || 0);
   });
 
-  const fl = document.getElementById('team-foul-left');
-  const fr = document.getElementById('team-foul-right');
-  if (fl) {
-    fl.textContent = leftTotal;
-    fl.classList.toggle('foul-red-bg', leftTotal >= 5);
-  }
-  if (fr) {
-    fr.textContent = rightTotal;
-    fr.classList.toggle('foul-red-bg', rightTotal >= 5);
-  }
+  ['team-foul-left', 'team-foul-left-b-prime'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = leftTotal;
+    el.classList.toggle('foul-red-bg', leftTotal >= 5);
+  });
+
+  ['team-foul-right', 'team-foul-right-b-prime'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = rightTotal;
+    el.classList.toggle('foul-red-bg', rightTotal >= 5);
+  });
 }
 
 // ============================================================
@@ -670,12 +690,10 @@ function restoreState() {
     if (selectedTeamRight) document.getElementById('select-team-right').value = selectedTeamRight;
 
     // Restore displays
-    document.getElementById('score-left').textContent = scoreLeft;
-    document.getElementById('score-right').textContent = scoreRight;
+    renderScoreDisplays();
     renderMainTimer();
     renderShotClock();
-    document.getElementById('quarter-a-num').textContent = quarterA;
-    document.getElementById('quarter-b-num').textContent = quarterB;
+    renderQuarterDisplays();
     updatePossessionUI();
 
     if (selectedTeamLeft && selectedTeamRight) {
@@ -686,7 +704,7 @@ function restoreState() {
     // Show the page that was active
     const activePage = state.activePage || 'page-home';
     if (activePage !== 'page-home' && selectedTeamLeft && selectedTeamRight) {
-      if (activePage === 'page-b') buildPlayerLists();
+      if (activePage === 'page-b' || activePage === 'page-b-prime') buildPlayerLists();
       showPage(activePage);
     }
   } catch (e) {

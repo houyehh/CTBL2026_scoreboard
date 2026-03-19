@@ -38,14 +38,22 @@
 
       <div class="role-select-row">
         <span class="role-label">Your Task:</span>
-        <div class="role-buttons">
+        <div class="role-buttons role-grid">
           <button id="btn-role-a" class="btn-role" data-role="A" onclick="selectRole('A')">
             <span class="role-letter">A</span>
             <span class="role-desc">分數大錶</span>
           </button>
+          <button id="btn-role-a-prime" class="btn-role" data-role="A_PRIME" onclick="selectRole('A_PRIME')">
+            <span class="role-letter">A'</span>
+            <span class="role-desc">大錶 + 小錶</span>
+          </button>
           <button id="btn-role-b" class="btn-role" data-role="B" onclick="selectRole('B')">
             <span class="role-letter">B</span>
             <span class="role-desc">犯規小錶</span>
+          </button>
+          <button id="btn-role-b-prime" class="btn-role" data-role="B_PRIME" onclick="selectRole('B_PRIME')">
+            <span class="role-letter">B'</span>
+            <span class="role-desc">犯規紀錄</span>
           </button>
         </div>
       </div>
@@ -118,6 +126,75 @@
     </div>
   </div>
 
+  <!-- ==================== PAGE A' — Combined Main + Shot Clock ==================== -->
+  <div id="page-a-prime" class="page">
+    <div class="scoreboard">
+      <div class="score-side score-left">
+        <div class="score-buttons-col">
+          <button class="btn-score-plus" onclick="addScore('left', 1)">+1</button>
+          <button class="btn-score-plus" onclick="addScore('left', 2)">+2</button>
+          <button class="btn-score-plus" onclick="addScore('left', 3)">+3</button>
+        </div>
+        <div class="score-inner">
+          <div id="team-name-left-a-prime" class="team-name-display">隊伍A</div>
+          <div id="score-left-a-prime" class="score-value score-green">0</div>
+          <div class="score-minus-row">
+            <button class="btn-score-minus" onclick="addScore('left', -1)">-1</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="score-center-col score-center-col-prime">
+        <div class="page-a-timer-bar">
+          <button class="btn-back" onclick="goHome()">↩</button>
+          <span class="role-badge">A'</span>
+          <div class="quarter-section" onclick="cycleQuarter('a-prime')" title="點擊切換節數">
+            <span class="quarter-label">第</span>
+            <span id="quarter-a-prime-num" class="quarter-num">1</span>
+            <span class="quarter-label">節</span>
+          </div>
+        </div>
+
+        <div class="a-prime-timers">
+          <div id="timer-a-prime-display" class="timer-display timer-red timer-display-main" onclick="editMainTimer()">
+            <span id="timer-a-prime-min" class="timer-digit">10</span>
+            <span class="timer-colon">:</span>
+            <span id="timer-a-prime-sec" class="timer-digit">00</span>
+          </div>
+          <div id="shot-clock-a-prime-display" class="timer-display timer-yellow timer-display-shot" onclick="editShotClock()">
+            <span id="shot-clock-a-prime-val">24.0</span>
+          </div>
+        </div>
+
+        <div class="a-prime-controls">
+          <button id="btn-timer-a-prime-toggle" class="btn-play-large btn-play-accent btn-play-red" onclick="toggleMainTimer()">▶</button>
+          <div class="a-prime-shot-buttons">
+            <button class="btn-shot-reset btn-shot-reset-compact" onclick="resetShotClock(14)">14</button>
+            <button class="btn-shot-reset btn-shot-reset-compact" onclick="resetShotClock(24)">24</button>
+          </div>
+          <button id="btn-shot-a-prime-toggle" class="btn-play-large btn-play-accent btn-play-yellow" onclick="toggleShotClock()">▶</button>
+        </div>
+
+        <button class="btn-swap" onclick="swapScores()" title="交換左右">⇄</button>
+      </div>
+
+      <div class="score-side score-right">
+        <div class="score-buttons-col">
+          <button class="btn-score-plus" onclick="addScore('right', 1)">+1</button>
+          <button class="btn-score-plus" onclick="addScore('right', 2)">+2</button>
+          <button class="btn-score-plus" onclick="addScore('right', 3)">+3</button>
+        </div>
+        <div class="score-inner">
+          <div id="team-name-right-a-prime" class="team-name-display">隊伍B</div>
+          <div id="score-right-a-prime" class="score-value score-green">0</div>
+          <div class="score-minus-row">
+            <button class="btn-score-minus" onclick="addScore('right', -1)">-1</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ==================== PAGE B — Fouls & Shot Clock ==================== -->
   <div id="page-b" class="page">
     <div class="page-b-layout">
@@ -174,6 +251,47 @@
       <div class="player-panel player-panel-right">
         <div class="panel-team-header" id="panel-header-right">隊伍B</div>
         <div class="player-list" id="player-list-right"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE B' — Fouls Only ==================== -->
+  <div id="page-b-prime" class="page">
+    <div class="page-b-layout">
+      <div class="player-panel player-panel-left">
+        <div class="panel-team-header" id="panel-header-left-b-prime">隊伍A</div>
+        <div class="player-list" id="player-list-left-b-prime"></div>
+      </div>
+
+      <div class="page-b-center page-b-center-prime">
+        <div class="page-b-top-controls">
+          <button class="btn-back" onclick="goHome()">↩</button>
+          <div class="quarter-section" onclick="cycleQuarter('b-prime')" title="點擊切換節數">
+            <span class="quarter-label">第</span>
+            <span id="quarter-b-prime-num" class="quarter-num">1</span>
+            <span class="quarter-label">節</span>
+          </div>
+        </div>
+
+        <div class="role-badge-row">
+          <span class="role-badge">B'</span>
+        </div>
+
+        <div class="team-fouls-area team-fouls-area-prime">
+          <div class="fouls-title-row fouls-title-row-prime">
+            <h2 class="fouls-title">Fouls</h2>
+          </div>
+          <div class="team-fouls-row">
+            <div id="team-foul-left-b-prime" class="foul-value foul-yellow">0</div>
+            <span class="foul-x">:</span>
+            <div id="team-foul-right-b-prime" class="foul-value foul-yellow">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-panel player-panel-right">
+        <div class="panel-team-header" id="panel-header-right-b-prime">隊伍B</div>
+        <div class="player-list" id="player-list-right-b-prime"></div>
       </div>
     </div>
   </div>

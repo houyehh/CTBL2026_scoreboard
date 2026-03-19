@@ -250,6 +250,12 @@ body {
   gap: 32px;
 }
 
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 18px;
+}
+
 .btn-role {
   display: flex;
   flex-direction: column;
@@ -260,19 +266,25 @@ body {
   cursor: pointer;
   color: #aaa;
   transition: all 0.2s;
-  padding: 12px 20px;
+  padding: 18px 20px;
   border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.03);
+  min-width: 180px;
+  min-height: 130px;
 }
 
 .btn-role:hover {
   color: #fff;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.32);
 }
 
 .btn-role.selected {
   color: #fff;
   background: rgba(255, 255, 255, 0.12);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.55);
 }
 
 .role-letter {
@@ -339,7 +351,8 @@ body {
 /* ============================
    PAGE A — Score + Main Timer
    ============================ */
-#page-a {
+#page-a,
+#page-a-prime {
   flex-direction: column;
   background: #0a0a0a;
   align-items: center;
@@ -376,6 +389,30 @@ body {
 
 .btn-play-large:hover {
   background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-play-accent {
+  margin-bottom: 0;
+}
+
+.btn-play-red {
+  color: #ff4d4d;
+  border-color: #ff4d4d;
+  box-shadow: 0 0 16px rgba(255, 77, 77, 0.18);
+}
+
+.btn-play-red:hover {
+  background: rgba(255, 77, 77, 0.12);
+}
+
+.btn-play-yellow {
+  color: #ffdd00;
+  border-color: #ffdd00;
+  box-shadow: 0 0 16px rgba(255, 221, 0, 0.18);
+}
+
+.btn-play-yellow:hover {
+  background: rgba(255, 221, 0, 0.12);
 }
 
 .scoreboard {
@@ -530,6 +567,50 @@ body {
   width: calc(300px * var(--app-scale));
 }
 
+.score-center-col-prime {
+  width: calc(470px * var(--app-scale));
+  padding-bottom: calc(10px * var(--app-scale));
+  justify-content: flex-start;
+  gap: calc(26px * var(--app-scale));
+}
+
+.a-prime-timers {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: calc(18px * var(--app-scale));
+  width: 100%;
+}
+
+.timer-display-main {
+  min-width: calc(220px * var(--app-scale));
+  justify-content: center;
+}
+
+.timer-display-shot {
+  min-width: calc(132px * var(--app-scale));
+  justify-content: center;
+}
+
+.a-prime-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(18px * var(--app-scale));
+  width: 100%;
+}
+
+.a-prime-shot-buttons {
+  display: flex;
+  align-items: center;
+  gap: calc(14px * var(--app-scale));
+}
+
+.btn-shot-reset-compact {
+  width: calc(112px * var(--app-scale));
+  height: calc(112px * var(--app-scale));
+}
+
 .btn-swap {
   width: 72px;
   height: 48px;
@@ -557,7 +638,8 @@ body {
 /* ============================
    PAGE B — Fouls + Shot Clock
    ============================ */
-#page-b {
+#page-b,
+#page-b-prime {
   flex-direction: column;
   background: #0a0a0a;
   padding: 0;
@@ -711,6 +793,11 @@ body {
   overflow-y: auto;
 }
 
+.page-b-center-prime {
+  justify-content: flex-start;
+  gap: 18px;
+}
+
 /* Controls bar above shot clock */
 .page-b-top-controls {
   display: flex;
@@ -729,6 +816,14 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.role-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 8px;
 }
 
 #shot-clock-display {
@@ -760,6 +855,10 @@ body {
   display: flex;
   align-items: center;
   gap: 24px;
+}
+
+.fouls-title-row-prime {
+  justify-content: center;
 }
 
 .fouls-title {
@@ -847,6 +946,10 @@ body {
 .btn-shot-reset:hover {
   background: rgba(50, 204, 100, 0.25);
   transform: scale(1.08);
+}
+
+.team-fouls-area-prime {
+  margin-top: calc(8px * var(--app-scale));
 }
 
 /* ============================
@@ -1028,6 +1131,10 @@ body {
 /* Responsive */
 @media (max-width: 900px) {
   /* Let scaling logic handle scoreboard sizes */
+
+  .role-grid {
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+  }
   
   .player-panel {
     width: 180px;
@@ -1052,6 +1159,11 @@ body {
 
   .vs-x-large {
     font-size: 28px;
+  }
+
+  .role-grid {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    gap: 12px;
   }
 
   .role-letter {
