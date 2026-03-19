@@ -600,7 +600,7 @@ body {
 }
 
 .score-center-col-prime {
-  width: calc(350px * var(--app-scale));
+  width: calc(420px * var(--app-scale));
   justify-content: flex-start;
   gap: calc(18px * var(--app-scale));
   padding-bottom: calc(10px * var(--app-scale));
@@ -610,25 +610,28 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: calc(20px * var(--app-scale));
-  width: 100%;
+  gap: calc(28px * var(--app-scale));
+  width: 118%;
+  overflow: visible;
 }
 
 .a-prime-main-timer {
-  min-width: calc(210px * var(--app-scale));
+  min-width: calc(250px * var(--app-scale));
   justify-content: center;
+  overflow: visible;
 }
 
 .a-prime-shot-display {
-  min-width: calc(120px * var(--app-scale));
+  min-width: calc(150px * var(--app-scale));
   justify-content: center;
+  overflow: visible;
 }
 
 .a-prime-control-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: calc(20px * var(--app-scale));
+  gap: calc(26px * var(--app-scale));
   width: 100%;
 }
 
@@ -647,10 +650,17 @@ body {
   font-size: calc(34px * var(--app-scale));
 }
 
-.btn-swap-prime {
-  width: calc(106px * var(--app-scale));
-  height: calc(70px * var(--app-scale));
-  font-size: calc(42px * var(--app-scale));
+.a-prime-cross {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(56px * var(--app-scale));
+  height: calc(56px * var(--app-scale));
+  font-family: 'Orbitron', sans-serif;
+  font-size: calc(44px * var(--app-scale));
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1;
 }
 
 .btn-swap {
