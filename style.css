@@ -609,14 +609,14 @@ body {
 .a-prime-timer-row {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: calc(16px * var(--app-scale));
   width: 100%;
 }
 
 .a-prime-main-timer {
-  flex: 0 1 auto;
-  min-width: calc(300px * var(--app-scale));
+  flex: 1 1 0;
+  min-width: calc(260px * var(--app-scale));
   justify-content: center;
   padding-left: calc(14px * var(--app-scale));
   padding-right: calc(14px * var(--app-scale));
@@ -630,6 +630,10 @@ body {
   padding-left: calc(12px * var(--app-scale));
   padding-right: calc(12px * var(--app-scale));
   overflow: hidden;
+}
+
+.a-prime-main-timer .timer-digit {
+  min-width: calc(60px * var(--app-scale));
 }
 
 .a-prime-control-row {
